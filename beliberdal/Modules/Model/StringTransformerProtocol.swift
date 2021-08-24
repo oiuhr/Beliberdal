@@ -99,10 +99,18 @@ enum StringTransformerType {
     case mock
 
     /// Helper computed variable to init class from enum value.
-    var entityForType: StringTransformerProtocol {
+    var entity: StringTransformerProtocol {
         switch self {
         case .balaboba: return BalabobaStringTransformer()
         case .mock: return StringTransfomerMock()
+        }
+    }
+    
+    /// Description for case.
+    var description: String {
+        switch self {
+        case .balaboba: return "Balaboba"
+        case .mock: return "Smiley face"
         }
     }
 }
@@ -124,9 +132,9 @@ class BeliberdalService: StringTransformerProtocol {
     
     private func bind() {
         settings.strategy
-            .dropFirst()
+//            .dropFirst()
             .sink { [weak self] mode in
-                self?.strategy = mode.entityForType
+                self?.strategy = mode.entity
                 print(mode, self?.strategy as Any)
             }
             .store(in: &cancellable)

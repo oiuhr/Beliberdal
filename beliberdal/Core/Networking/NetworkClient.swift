@@ -8,6 +8,8 @@
 import Foundation
 import Combine
 
+// MARK: TODO - Tests
+
 struct NetworkClient {
     
     private let session: URLSession

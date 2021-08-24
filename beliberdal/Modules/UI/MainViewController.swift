@@ -18,16 +18,44 @@ class MainViewController: ViewController<MainView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.button.addTarget(self, action: #selector(fire), for: .touchUpInside)
-        mainView.button1.addTarget(self, action: #selector(mode), for: .touchUpInside)
+        mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
+        mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
+        
+        bind()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let tabBar = tabBarController else { return }
+        tabBar.tabBar.backgroundImage = UIImage()
+        tabBar.tabBar.shadowImage = UIImage()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        guard let tabBar = tabBarController else { return }
+        tabBar.tabBar.backgroundImage = nil
+        tabBar.tabBar.shadowImage = nil
+    }
+    
+    private func bind() {
+        settingsService.strategy
+            .sink { [unowned self] value in
+                mainView.switchModeButton.setTitle(value.description, for: .normal)
+            }
+            .store(in: &cancellable)
     }
     
     @objc
     func fire() {
-        transformer.transform("пиво")
+        guard let text = mainView.contentView.inputTextView.text else { return }
+        transformer.transform(text)
             .breakpointOnError()
-            .sink { _ in } receiveValue: { value in
-                print(value)
+            .receive(on: RunLoop.main)
+            .sink { _ in } receiveValue: { [weak self] value in
+                self?.mainView.contentView.outputTextView.text = value
             }
             .store(in: &cancellable)
     }
@@ -35,8 +63,10 @@ class MainViewController: ViewController<MainView> {
     @objc
     func mode() {
         switch settingsService.strategy.value {
-        case .mock: settingsService.setStrategy(.balaboba)
-        case .balaboba: settingsService.setStrategy(.mock)
+        case .mock:
+            settingsService.setStrategy(.balaboba)
+        case .balaboba:
+            settingsService.setStrategy(.mock)
         }
     }
     

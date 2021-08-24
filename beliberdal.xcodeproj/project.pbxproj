@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
+		CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */; };
+		CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6A26D4AC9700C33D0D /* MainContentView.swift */; };
+		CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6C26D4ACA800C33D0D /* MainInputView.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
 		CD7BF78726CC746E00EF287D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78626CC746E00EF287D /* MainView.swift */; };
@@ -40,6 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTopBar.swift; sourceTree = "<group>"; };
+		CD144E6A26D4AC9700C33D0D /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		CD144E6C26D4ACA800C33D0D /* MainInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInputView.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD7BF78626CC746E00EF287D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -86,6 +94,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD144E6E26D4AD7000C33D0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD7BF78626CC746E00EF287D /* MainView.swift */,
+				CD144E6F26D4AD7A00C33D0D /* SupportingViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD144E6F26D4AD7A00C33D0D /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */,
+				CD144E6A26D4AC9700C33D0D /* MainContentView.swift */,
+				CD144E6C26D4ACA800C33D0D /* MainInputView.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
 		CD7BF77526CC511700EF287D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +185,7 @@
 		CD7BF77D26CC5A7600EF287D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CD7BF78626CC746E00EF287D /* MainView.swift */,
+				CD144E6E26D4AD7000C33D0D /* Views */,
 				CD7BF78826CC74C200EF287D /* MainViewController.swift */,
 			);
 			path = UI;
@@ -185,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				CD7BF78326CC743400EF287D /* ModuleComponents */,
+				CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -385,14 +413,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */,
+				CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */,
 				CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */,
 				CD7BF78526CC744700EF287D /* ViewController.swift in Sources */,
+				CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */,
 				CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */,
 				CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */,
+				CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */,
 				CD7BF78B26CC774700EF287D /* NetworkClient.swift in Sources */,
 				CD7BF78726CC746E00EF287D /* MainView.swift in Sources */,
 				CDB804B5269111FE00DB4B14 /* AppDelegate.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
+				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

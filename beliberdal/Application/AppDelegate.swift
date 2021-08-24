@@ -22,17 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func startApplication() {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-//        let tabBarController = CustomTabBarController()
-//        let viewController = UIViewController()
-//        viewController.view.backgroundColor = .clear
-//        tabBarController.viewControllers = [ViewController(), viewController]
-//        for controller in tabBarController.viewControllers! {
-//            UIView.animate(withDuration: 10) {
-//                controller.view.frame.origin.x = 100
-//            }
-//        }
-//        tabBarController.viewControllers![tabBarController.selectedIndex].view.layoutSubviews()
-        window?.rootViewController = MainViewController()
+        let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .accentPink
+        let vc = UINavigationController(rootViewController: MainViewController())
+        vc.isNavigationBarHidden = true
+        vc.tabBarItem = .init(title: "Home", image: .init(systemName: "house.fill"), tag: 0)
+        let vc2 = UIViewController()
+        vc2.view.backgroundColor = .cyan
+        vc2.tabBarItem = .init(title: "Home2", image: .init(systemName: "house.fill"), tag: 1)
+        tabBarController.viewControllers = [vc, vc2]
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
