@@ -10,16 +10,11 @@ import Combine
 
 class MainViewController: ViewController<MainView> {
     
-    private let transformer: StringTransformerProtocol = BeliberdalService()
-    private let settingsService = SettingsService.shared
-    
+    private let viewModel = MainViewModel()
     private lazy var cancellable = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
-        mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
         
         bind()
     }
@@ -41,33 +36,38 @@ class MainViewController: ViewController<MainView> {
     }
     
     private func bind() {
-        settingsService.strategy
+        viewModel.output.currentTransformerMode
             .sink { [unowned self] value in
                 mainView.switchModeButton.setTitle(value.description, for: .normal)
             }
             .store(in: &cancellable)
-    }
-    
-    @objc
-    func fire() {
-        guard let text = mainView.contentView.inputTextView.text else { return }
-        transformer.transform(text)
-            .breakpointOnError()
-            .receive(on: RunLoop.main)
-            .sink { _ in } receiveValue: { [weak self] value in
-                self?.mainView.contentView.outputTextView.text = value
+        
+        viewModel.output.transformResult
+//            .catch { _ in handleError() }
+            .sink { [unowned self] _ in handleError() } receiveValue: { [unowned self] value in
+                mainView.contentView.outputTextView.text = value
             }
             .store(in: &cancellable)
+        
+        mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
+        mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
     }
     
     @objc
-    func mode() {
-        switch settingsService.strategy.value {
-        case .mock:
-            settingsService.setStrategy(.balaboba)
-        case .balaboba:
-            settingsService.setStrategy(.mock)
-        }
+    private func fire() {
+        guard let text = mainView.contentView.inputTextView.text else { return }
+        viewModel.input.transformAction.send(text)
+    }
+    
+    @objc
+    private func mode() {
+        viewModel.input.needsModeChange.send(())
+    }
+    
+    private func handleError() {
+        let alert = UIAlertController(title: "Error occured!", message: "Were so sorry.", preferredStyle: .alert)
+        alert.addAction(.init(title: "uwu", style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
 }

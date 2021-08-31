@@ -50,6 +50,7 @@ class MainContentView: UIView {
     } (UILabel())
     
     lazy var outputTextView: UITextView = {
+        $0.accessibilityIdentifier = "output"
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.textColor = .accentPink
         $0.isEditable = false

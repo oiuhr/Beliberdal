@@ -34,6 +34,7 @@ class MainInputView: UIView {
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.textColor = .fontBlack
         $0.isScrollEnabled = false
+        $0.autocorrectionType = .no
         $0.textContainerInset = .zero
         $0.textContainer.lineFragmentPadding = .zero
         $0.translatesAutoresizingMaskIntoConstraints = false

@@ -16,6 +16,7 @@ class MainView: UIView {
     
     lazy var fireButton: UIButton = {
         $0.setImage(.init(systemName: "arrow.clockwise.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.accessibilityIdentifier = "fire"
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.imageView?.translatesAutoresizingMaskIntoConstraints = false
