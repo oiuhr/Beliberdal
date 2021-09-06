@@ -61,7 +61,8 @@ class MainViewController: ViewController<MainView> {
     
     @objc
     private func mode() {
-        viewModel.input.needsModeChange.send(())
+//        viewModel.input.needsModeChange.send(())
+        navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
     
     private func handleError() {

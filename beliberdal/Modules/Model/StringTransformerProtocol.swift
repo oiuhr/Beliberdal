@@ -16,23 +16,37 @@ enum StringTransformerError: Error {
 /// Protocol for any entity that could transform given string.
 protocol StringTransformerProtocol: AnyObject {
     /// Transforms given string to any nonsense.
+    var name: String { get }
     func transform(_ string: String) -> AnyPublisher<String, Error>
 }
 
 protocol VersatileStringTransformerProtocol: StringTransformerProtocol {
     
-    typealias ModeIdentifier = UInt
-    typealias ModeDescription = String
-    typealias ModeList = [ModeIdentifier : ModeDescription]
+    typealias OptionList = [StringTransformerOptionProtocol]
     
     /// List of modes that could be applyed to transformer.
     /// Built on top of Balaboba API, which accepts "intro" as a parameter that represents the style of the output text.
-    var modeList: ModeList { get }
+    var modeList: OptionList { get }
     
     /// Set current mode.
-    func setMode(_ mode: ModeIdentifier)
-    var currentMode: ModeIdentifier { get }
+    //    func setMode(_ mode: StringTransformerOptionProtocol)
+    var currentMode: StringTransformerOptionProtocol { get }
 }
+
+protocol StringTransformerOptionProtocol {
+    var id: UInt { get }
+    var description: String { get }
+    
+    typealias Transform = ((String) -> String)
+    var transformOperation: Transform? { get }
+}
+
+struct StringTransformerOption: StringTransformerOptionProtocol {
+    let id: UInt
+    let description: String
+    var transformOperation: Transform? = nil
+}
+
 
 //class BasicTransform: StringTransformerProtocol {
 //
@@ -55,6 +69,10 @@ protocol VersatileStringTransformerProtocol: StringTransformerProtocol {
 
 class StringTransfomerMock: StringTransformerProtocol {
     
+    var name: String {
+        "Mock"
+    }
+    
     func transform(_ string: String) -> AnyPublisher<String, Error> {
         Just(string + " :)")
             .setFailureType(to: Error.self)
@@ -65,24 +83,34 @@ class StringTransfomerMock: StringTransformerProtocol {
 
 class SmileyStringTransformer: VersatileStringTransformerProtocol {
     
-    private(set) var modeList: ModeList = [
-        0: ":)",
-        1: ":("
-    ]
-    private(set) var currentMode: ModeIdentifier = 0
-    
-    enum Mode {
-        case happy
-        case unhappy
+    var name: String {
+        "Smiles"
     }
     
-    func setMode(_ mode: ModeIdentifier) {
-        currentMode = mode
+    private(set) lazy var modeList: OptionList = [
+        StringTransformerOption(id: 0, description: "Смайлик :)", transformOperation: { $0 + " :)" }),
+        StringTransformerOption(id: 1, description: "Грустный смайлик :(", transformOperation: { $0 + " :(" }),
+        StringTransformerOption(id: 2, description: "none", transformOperation: f(_:))
+    ]
+    lazy var currentMode: StringTransformerOptionProtocol = modeList[0]
+    
+    func f(_ string: String) -> String {
+        string
+    }
+    
+    init(_ mode: UInt) {
+        
     }
     
     func transform(_ string: String) -> AnyPublisher<String, Error> {
-        let smiley = modeList[currentMode] ?? ":|"
-        return Just("\(string) \(smiley)")
+        guard let transformOperation = currentMode.transformOperation else {
+            return Fail.init(error: URLError.init(.appTransportSecurityRequiresSecureConnection))
+                .mapError { $0 as Error }
+                .eraseToAnyPublisher()
+        }
+        
+        return Just(transformOperation(string))
+            .compactMap { $0 }
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()
     }
@@ -91,25 +119,45 @@ class SmileyStringTransformer: VersatileStringTransformerProtocol {
 
 class BalabobaStringTransformer: VersatileStringTransformerProtocol {
     
-    private let networkClient = NetworkClient()
-    
-    private(set) var modeList: ModeList = [
-        0: "Без стиля",
-        1: "Теории заговора",
-        2: "ТВ-репортажи"
-    ]
-    private(set) var currentMode: UInt = 0
-    
-    func setMode(_ mode: ModeIdentifier) {
-        currentMode = mode
+    var name: String {
+        "Balaboba"
     }
     
-    init(_ mode: ModeIdentifier) {
-        setMode(mode)
+    private let networkClient = NetworkClient()
+    
+    var currentMode: StringTransformerOptionProtocol = StringTransformerOption(id: 0, description: "")
+    var modeList: OptionList = []
+    
+    static let shared = BalabobaStringTransformer()
+    
+    private init() {
+//        var req = URLRequest(url: .init(string: "https://zeapi.yandex.net/lab/api/yalm/intros")!)
+//        req.httpMethod = "GET"
+//        let headers = [
+//            "Accept": "application/json",
+//            "Content-Type": "application/json",
+//            "Connection": "keep-alive"
+//        ]
+//        req.allHTTPHeaderFields = headers
+//        networkClient.perform(req)
+//            .decode(type: BalabobaModeEndpoint.Response.self, decoder: JSONDecoder())
+//            .map { $0.intros.map { intro in
+//                intro.map { introent in
+//                    switch introent {
+//                    case .integer(<#T##Int#>)
+//                    }
+//                }
+//            }
+//            }
+    }
+    
+    func withMode(_ id: UInt) -> BalabobaStringTransformer {
+        currentMode = modeList[Int(id)]
+        return self
     }
     
     func transform(_ string: String) -> AnyPublisher<String, Error> {
-        let body = BalabobaEndpoint.Body(query: string, intro: Int(currentMode))
+        let body = BalabobaEndpoint.Body(query: string, intro: Int(currentMode.id))
         let request = jsonPostRequest(endpoint: BalabobaEndpoint.endpoint, jsonBody: body)
         
         return networkClient.perform(request)
@@ -141,6 +189,34 @@ extension BalabobaStringTransformer {
         
     }
     
+    struct BalabobaModeEndpoint {
+        
+        struct Response: Decodable {
+            let error: Int
+            let intros: [[Intro]]
+            
+            enum Intro: Codable {
+                case integer(Int)
+                case string(String)
+                
+                init(from decoder: Decoder) throws {
+                    let container = try decoder.singleValueContainer()
+                    if let x = try? container.decode(Int.self) {
+                        self = .integer(x)
+                        return
+                    }
+                    if let x = try? container.decode(String.self) {
+                        self = .string(x)
+                        return
+                    }
+                    throw DecodingError.typeMismatch(Intro.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Intro"))
+                }
+                
+            }
+        }
+        
+    }
+    
 }
 
 //class TransformSettings {
@@ -168,21 +244,36 @@ enum StringTransformerType {
     /// Helper computed variable to init class from enum value.
     var entity: StringTransformerProtocol {
         switch self {
-        case .balaboba(let value): return BalabobaStringTransformer(value)
+        case .balaboba(let value): return BalabobaStringTransformer.shared.withMode(value)
         case .mock: return StringTransfomerMock()
+        }
+    }
+    
+    var descriptionD: [StringTransformerOptionProtocol] {
+        switch self {
+        case .balaboba: return BalabobaStringTransformer.shared.modeList
+        case .mock: return SmileyStringTransformer(0).modeList
         }
     }
     
     /// Description for case.
     var description: String {
         switch self {
-        case .balaboba: return "Balaboba"
-        case .mock: return "Smiley face"
+        case .balaboba: return BalabobaStringTransformer.shared.name
+        case .mock: return SmileyStringTransformer(0).name
         }
     }
 }
 
+
+
+// strategy container
+
 class BeliberdalService: StringTransformerProtocol {
+    
+    var name: String {
+        "belib"
+    }
     
     private var strategy: StringTransformerProtocol?
     private let settings: SettingsServiceProtocol
@@ -207,7 +298,7 @@ class BeliberdalService: StringTransformerProtocol {
             .store(in: &cancellable)
     }
     
-//    func perform(_ mode: )
+    //    func perform(_ mode: )
     
     func transform(_ string: String) -> AnyPublisher<String, Error> {
         strategy?.transform(string) ?? Fail<String, Error>
