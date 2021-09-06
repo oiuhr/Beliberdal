@@ -10,8 +10,7 @@ import Combine
 
 class SettingsViewController: ViewController<SettingsView> {
     
-    private lazy var cancellable = Set<AnyCancellable>()
-    let settingsService = SettingsService.shared
+    // MARK: - Properties
 
     struct HeaderItem: Hashable {
         let title: String
@@ -26,9 +25,31 @@ class SettingsViewController: ViewController<SettingsView> {
         func hash(into hasher: inout Hasher) { hasher.combine(title) }
     }
     
+    typealias DataSource = UITableViewDiffableDataSource<HeaderItem, SectionListItem>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<HeaderItem, SectionListItem>
+    private lazy var dataSource: DataSource = createDataSource()
+    
     /// https://developer.apple.com/documentation/uikit/uitableviewdelegate/handling_row_selection_in_a_table_view
     private var lastlySelectedCell: UITableViewCell?
-    private lazy var dataSource: UITableViewDiffableDataSource<HeaderItem, SectionListItem> = createDataSource()
+    
+    private let settingsService: SettingsServiceProtocol
+    private lazy var cancellable = Set<AnyCancellable>()
+    
+    // MARK: - Lifecycle
+    
+    init(settingsService: SettingsServiceProtocol) {
+        self.settingsService = settingsService
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init() {
+        self.init(settingsService: SettingsService.shared)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +57,12 @@ class SettingsViewController: ViewController<SettingsView> {
         title = "Beliberdal Settings"
         mainView.tableView.delegate = self
         
-        
-        var snapshot = NSDiffableDataSourceSnapshot<HeaderItem, SectionListItem>()
+        var snapshot = Snapshot()
         for c in StringTransformerType.allCases {
-//            snapshot.appendSections([c.description.map {  } ])
+            let section = HeaderItem(title: c.name, items: c.availableModes.map { SectionListItem(title: $0) } )
+            snapshot.appendSections([section])
+            snapshot.appendItems(section.items, toSection: section)
         }
-        let balabobaItem = HeaderItem(title: "Balaboba", items: [.init(title: "1"), .init(title: "2"), .init(title: "3"), .init(title: "4"), .init(title: "5"),])
-        let mockItem = HeaderItem(title: "Smiley", items: [.init(title: ":)"), .init(title: ":(")])
-        snapshot.appendSections([balabobaItem, mockItem])
-        snapshot.appendItems(balabobaItem.items, toSection: balabobaItem)
-        snapshot.appendItems(mockItem.items, toSection: mockItem)
-        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
@@ -66,10 +82,11 @@ class SettingsViewController: ViewController<SettingsView> {
 
 extension SettingsViewController {
     
-    private func createDataSource() -> UITableViewDiffableDataSource<HeaderItem, SectionListItem> {
+    private func createDataSource() -> DataSource {
         let ds = UITableViewDiffableDataSource<HeaderItem, SectionListItem>.init(tableView: mainView.tableView) { tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             cell.textLabel?.text = itemIdentifier.title
+            cell.textLabel?.font = .systemFont(ofSize: 14)
             cell.accessoryType = cell.isSelected ? .checkmark : .none
             cell.tintColor = .accentPink
             
@@ -106,10 +123,4 @@ extension SettingsViewController: UITableViewDelegate {
         return view
     }
     
-}
-
-extension StringTransformerType: CaseIterable {
-    static var allCases: [StringTransformerType] {
-        [.balaboba(mode: 0), .mock]
-    }
 }

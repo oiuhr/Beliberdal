@@ -38,7 +38,7 @@ class MainViewController: ViewController<MainView> {
     private func bind() {
         viewModel.output.currentTransformerMode
             .sink { [unowned self] value in
-                mainView.switchModeButton.setTitle(value.description, for: .normal)
+                mainView.switchModeButton.setTitle(value.name, for: .normal)
             }
             .store(in: &cancellable)
         

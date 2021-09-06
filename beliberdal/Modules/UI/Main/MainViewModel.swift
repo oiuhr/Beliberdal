@@ -31,7 +31,7 @@ class MainViewModel {
     private let result = CurrentValueSubject<String, Error>("")
     
     /// local
-    private let transformer: StringTransformerProtocol = BeliberdalService()
+    private let transformer = BeliberdalService()
     private let settingsService
                         //      : SettingsServiceProtocol
                                 = SettingsService.shared
@@ -65,10 +65,10 @@ class MainViewModel {
         needsModeChange
             .sink { [unowned self] in
                 switch settingsService._strategy.value {
-                case .mock:
-                    settingsService.setStrategy(.balaboba(mode: 0))
+                case .smiley:
+                    settingsService.setStrategy(.balaboba(mode: .quotes))
                 case .balaboba:
-                    settingsService.setStrategy(.mock)
+                    settingsService.setStrategy(.smiley(mode: .happy))
                 }
             }
             .store(in: &cancellable)
