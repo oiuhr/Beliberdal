@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
+		CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */; };
+		CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6A26D4AC9700C33D0D /* MainContentView.swift */; };
+		CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6C26D4ACA800C33D0D /* MainInputView.swift */; };
+		CD28EA6326DEE32A000CF91D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28EA6226DEE32A000CF91D /* SettingsView.swift */; };
+		CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28EA6426DEE334000CF91D /* SettingsViewController.swift */; };
+		CD4BCE1526E6668E00FA126A /* SmileyStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */; };
+		CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */; };
+		CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */; };
+		CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
+		CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
+		CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
+		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
 		CD7BF78726CC746E00EF287D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78626CC746E00EF287D /* MainView.swift */; };
@@ -40,6 +53,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTopBar.swift; sourceTree = "<group>"; };
+		CD144E6A26D4AC9700C33D0D /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		CD144E6C26D4ACA800C33D0D /* MainInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInputView.swift; sourceTree = "<group>"; };
+		CD28EA6226DEE32A000CF91D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CD28EA6426DEE334000CF91D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileyStringTransfomer.swift; sourceTree = "<group>"; };
+		CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalabobaStringTransfomer.swift; sourceTree = "<group>"; };
+		CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeliberdalService.swift; sourceTree = "<group>"; };
+		CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
+		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD7BF78626CC746E00EF287D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -86,6 +112,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD144E6E26D4AD7000C33D0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD7BF78626CC746E00EF287D /* MainView.swift */,
+				CD144E6F26D4AD7A00C33D0D /* SupportingViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD144E6F26D4AD7A00C33D0D /* SupportingViews */ = {
+			isa = PBXGroup;
+			children = (
+				CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */,
+				CD144E6A26D4AC9700C33D0D /* MainContentView.swift */,
+				CD144E6C26D4ACA800C33D0D /* MainInputView.swift */,
+			);
+			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		CD28EA6026DEE29E000CF91D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CD144E6E26D4AD7000C33D0D /* Views */,
+				CD7BF78826CC74C200EF287D /* MainViewController.swift */,
+				CD68DF4126D5859E0004B29A /* MainViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		CD28EA6126DEE31A000CF91D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD28EA6226DEE32A000CF91D /* SettingsView.swift */,
+				CD28EA6426DEE334000CF91D /* SettingsViewController.swift */,
+				CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CD4BCE1126E6661F00FA126A /* Transfomer */ = {
+			isa = PBXGroup;
+			children = (
+				CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */,
+				CD4BCE1826E66CD000FA126A /* Implementations */,
+			);
+			path = Transfomer;
+			sourceTree = "<group>";
+		};
+		CD4BCE1826E66CD000FA126A /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */,
+				CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		CD4BCE1926E66D8800FA126A /* BeliberdalService */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */,
+			);
+			path = BeliberdalService;
+			sourceTree = "<group>";
+		};
+		CD4BCE1C26E6A7A200FA126A /* SettingsService */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */,
+				CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */,
+			);
+			path = SettingsService;
+			sourceTree = "<group>";
+		};
 		CD7BF77526CC511700EF287D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,8 +258,8 @@
 		CD7BF77D26CC5A7600EF287D /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				CD7BF78626CC746E00EF287D /* MainView.swift */,
-				CD7BF78826CC74C200EF287D /* MainViewController.swift */,
+				CD28EA6026DEE29E000CF91D /* Main */,
+				CD28EA6126DEE31A000CF91D /* Settings */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -167,7 +267,9 @@
 		CD7BF77E26CC703500EF287D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */,
+				CD4BCE1926E66D8800FA126A /* BeliberdalService */,
+				CD4BCE1C26E6A7A200FA126A /* SettingsService */,
+				CD4BCE1126E6661F00FA126A /* Transfomer */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				CD7BF78326CC743400EF287D /* ModuleComponents */,
+				CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -384,15 +487,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD28EA6326DEE32A000CF91D /* SettingsView.swift in Sources */,
 				CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */,
+				CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */,
 				CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */,
 				CD7BF78526CC744700EF287D /* ViewController.swift in Sources */,
+				CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */,
+				CD4BCE1526E6668E00FA126A /* SmileyStringTransfomer.swift in Sources */,
 				CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */,
+				CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */,
 				CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */,
+				CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */,
+				CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */,
+				CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */,
 				CD7BF78B26CC774700EF287D /* NetworkClient.swift in Sources */,
 				CD7BF78726CC746E00EF287D /* MainView.swift in Sources */,
 				CDB804B5269111FE00DB4B14 /* AppDelegate.swift in Sources */,
+				CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */,
+				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
+				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
+				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
+				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
