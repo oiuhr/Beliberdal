@@ -19,6 +19,9 @@
 		CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
 		CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
 		CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
+		CD4BCE2426E891CE00FA126A /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2326E891CE00FA126A /* FavouritesView.swift */; };
+		CD4BCE2626E8920500FA126A /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */; };
+		CD4BCE2926E8943000FA126A /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
@@ -65,6 +68,9 @@
 		CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		CD4BCE2326E891CE00FA126A /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
+		CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +192,16 @@
 			path = SettingsService;
 			sourceTree = "<group>";
 		};
+		CD4BCE2726E8940F00FA126A /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BCE2326E891CE00FA126A /* FavouritesView.swift */,
+				CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */,
+				CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
 		CD7BF77526CC511700EF287D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +276,7 @@
 			children = (
 				CD28EA6026DEE29E000CF91D /* Main */,
 				CD28EA6126DEE31A000CF91D /* Settings */,
+				CD4BCE2726E8940F00FA126A /* Favourites */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -494,6 +511,7 @@
 				CD7BF78526CC744700EF287D /* ViewController.swift in Sources */,
 				CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */,
 				CD4BCE1526E6668E00FA126A /* SmileyStringTransfomer.swift in Sources */,
+				CD4BCE2426E891CE00FA126A /* FavouritesView.swift in Sources */,
 				CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */,
 				CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */,
 				CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */,
@@ -505,9 +523,11 @@
 				CDB804B5269111FE00DB4B14 /* AppDelegate.swift in Sources */,
 				CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */,
 				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
+				CD4BCE2626E8920500FA126A /* FavouritesTableViewCell.swift in Sources */,
 				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
 				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
+				CD4BCE2926E8943000FA126A /* FavouritesViewController.swift in Sources */,
 				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
