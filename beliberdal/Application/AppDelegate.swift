@@ -30,9 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let vc = mainCoordinator.toPresent
         vc.tabBarItem = .init(title: "Home", image: .init(systemName: "house.fill"), tag: 0)
-        let vc2 = UIViewController()
-        vc2.view.backgroundColor = .cyan
-        vc2.tabBarItem = .init(title: "Home2", image: .init(systemName: "house.fill"), tag: 1)
+        let vc2 = UINavigationController(rootViewController: FavouritesViewController())
+        vc2.tabBarItem = .init(title: "Favourites", image: .init(systemName: "bookmark.fill"), tag: 1)
         
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .accentPink
