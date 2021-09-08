@@ -27,8 +27,8 @@ class MainViewController: ViewController<MainView> {
         tabBar.tabBar.shadowImage = UIImage()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
         guard let tabBar = tabBarController else { return }
         tabBar.tabBar.backgroundImage = nil
@@ -43,7 +43,6 @@ class MainViewController: ViewController<MainView> {
             .store(in: &cancellable)
         
         viewModel.output.transformResult
-//            .catch { _ in handleError() }
             .sink { [unowned self] _ in handleError() } receiveValue: { [unowned self] value in
                 mainView.contentView.outputTextView.text = value
             }
@@ -61,7 +60,6 @@ class MainViewController: ViewController<MainView> {
     
     @objc
     private func mode() {
-//        viewModel.input.needsModeChange.send(())
         navigationController?.pushViewController(SettingsViewController(), animated: true)
     }
     

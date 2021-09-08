@@ -19,11 +19,13 @@ class MainView: UIView {
         $0.accessibilityIdentifier = "fire"
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
-        $0.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            $0.imageView!.widthAnchor.constraint(equalTo: $0.widthAnchor),
-            $0.imageView!.heightAnchor.constraint(equalTo: $0.heightAnchor)
-        ])
+        if let iv = $0.imageView {
+            iv.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                iv.widthAnchor.constraint(equalTo: $0.widthAnchor),
+                iv.heightAnchor.constraint(equalTo: $0.heightAnchor)
+            ])
+        }
         return $0
     } (RoundedButton())
     

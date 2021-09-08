@@ -32,10 +32,7 @@ class MainViewModel {
     
     /// local
     private let transformer = BeliberdalService()
-    private let settingsService
-                        //      : SettingsServiceProtocol
-                                = SettingsService.shared
-    
+    private let settingsService: SettingsServiceProtocol = SettingsService.shared
     private var cancellable = Set<AnyCancellable>()
     
     init() {
@@ -58,18 +55,6 @@ class MainViewModel {
             } receiveValue: { [unowned self] transformed in
                 print(transformed)
                 result.send(transformed)
-            }
-            .store(in: &cancellable)
-        
-        
-        needsModeChange
-            .sink { [unowned self] in
-                switch settingsService._strategy.value {
-                case .smiley:
-                    settingsService.setStrategy(.balaboba(mode: .quotes))
-                case .balaboba:
-                    settingsService.setStrategy(.smiley(mode: .happy))
-                }
             }
             .store(in: &cancellable)
     }

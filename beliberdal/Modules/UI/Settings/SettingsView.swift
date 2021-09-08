@@ -9,9 +9,12 @@ import UIKit
 
 class SettingsView: UIView {
     
+    static var cellReuseIdentifier: String { "SettingsViewTableViewCell" }
+    static var headerReuseIdentifier: String { "SettingsViewTableViewHeader" }
+    
     lazy var tableView: UITableView = {
-        $0.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        $0.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+        $0.register(UITableViewCell.self, forCellReuseIdentifier: SettingsView.cellReuseIdentifier)
+        $0.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: SettingsView.headerReuseIdentifier)
         $0.backgroundColor = .clear
         $0.translatesAutoresizingMaskIntoConstraints = false
         

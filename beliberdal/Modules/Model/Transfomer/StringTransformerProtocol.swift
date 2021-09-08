@@ -14,14 +14,22 @@ enum StringTransformerError: Error {
 }
 
 protocol StringTransfomerOption {
+//    var rawValue: Int { get }
     var modeDescription: String { get }
+//    var allCases: [StringTransfomerOption] { get }
 }
 
 /// Protocol for any entity that could transform given string.
 protocol StringTransformerProtocol: AnyObject {
-    /// Transforms given string to any nonsense.
+    /// Transformer display name.
     static var name: String { get }
+    /// Transforms given string to any nonsense.
     func transform(_ string: String) -> AnyPublisher<String, Error>
+}
+
+protocol OptionedStringTransformedProtocol: StringTransformerProtocol {
+    associatedtype Mode = RawRepresentable & CaseIterable & StringTransfomerOption
+    var currentMode: Mode { get }
 }
 
 enum StringTransformerType: CaseIterable {
@@ -32,7 +40,7 @@ enum StringTransformerType: CaseIterable {
     /// Mock used for testing purposes.
     case smiley(mode: SmileyStringTransformer.Modes)
 
-    /// Helper computed variable to init class from enum value.
+    /// Entity for case.
     var entity: StringTransformerProtocol {
         switch self {
         case .balaboba(let mode): return BalabobaStringTransformer(for: mode)
@@ -40,14 +48,23 @@ enum StringTransformerType: CaseIterable {
         }
     }
     
-    var availableModes: [String] {
+    var availableModes: [StringTransformerType] {
         switch self {
-        case .balaboba: return BalabobaStringTransformer.Modes.allCases.map { $0.modeDescription }
-        case .smiley: return SmileyStringTransformer.Modes.allCases.map { $0.modeDescription }
+        case .balaboba: return BalabobaStringTransformer.Modes.allCases.enumerated()
+                .map { StringTransformerType.balaboba(mode: .init(rawValue: $0.offset) ?? .none) }
+        case .smiley: return SmileyStringTransformer.Modes.allCases.enumerated()
+                .map { StringTransformerType.smiley(mode: .init(rawValue: $0.offset) ?? .happy) }
         }
     }
     
-    /// Name for case.
+    var modeName: String {
+        switch self {
+        case .balaboba(let mode): return mode.modeDescription
+        case .smiley(let mode): return mode.modeDescription
+        }
+    }
+    
+    /// Display name for case.
     var name: String {
         switch self {
         case .balaboba: return BalabobaStringTransformer.name
@@ -58,4 +75,19 @@ enum StringTransformerType: CaseIterable {
     static var allCases: [StringTransformerType] {
         [.balaboba(mode: .none), .smiley(mode: .happy)]
     }
+    
 }
+
+extension StringTransformerType: Hashable {
+    func hash(into hasher: inout Hasher) { hasher.combine(self.name) }
+    static func == (lhs: StringTransformerType, rhs: StringTransformerType) -> Bool {
+        switch (lhs, rhs) {
+        case (.balaboba(let lm), .balaboba(let rm)):
+            return lm == rm
+        case (.smiley(let lm), .smiley(let rm)):
+            return lm == rm
+        default: return false
+        }
+    }
+}
+

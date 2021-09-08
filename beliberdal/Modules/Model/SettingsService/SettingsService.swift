@@ -8,9 +8,10 @@
 import Combine
 
 final class SettingsService: SettingsServiceProtocol {
-    // MARK: TODO - Change _strategy visibility to private
-    let _strategy: CurrentValueSubject<StringTransformerType, Never> = .init(.smiley(mode: .happy))
+    
+    private let _strategy: CurrentValueSubject<StringTransformerType, Never> = .init(.smiley(mode: .happy))
     let strategy: AnyPublisher<StringTransformerType, Never>
+    
     private var cancellable = Set<AnyCancellable>()
     
     static let shared = SettingsService()

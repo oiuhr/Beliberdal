@@ -18,6 +18,7 @@
 		CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */; };
 		CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
 		CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
+		CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeliberdalService.swift; sourceTree = "<group>"; };
 		CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				CD28EA6226DEE32A000CF91D /* SettingsView.swift */,
 				CD28EA6426DEE334000CF91D /* SettingsViewController.swift */,
+				CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */,
 				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
 				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
+				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
 				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
