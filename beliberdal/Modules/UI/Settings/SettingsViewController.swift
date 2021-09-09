@@ -90,11 +90,6 @@ final class SettingsViewController: ViewController<SettingsView> {
 // MARK: - UITableViewDataSource
 
 extension SettingsViewController {
-
-    struct StringTransformerOption: Hashable {
-        let option: StringTransformerType
-        let name: String
-    }
     
     private func createDataSource() -> DataSource {
         DataSource(tableView: mainView.tableView) { [weak self] tableView, indexPath, itemIdentifier in
