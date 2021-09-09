@@ -13,23 +13,12 @@ enum StringTransformerError: Error {
     case undefined
 }
 
-protocol StringTransfomerOption {
-//    var rawValue: Int { get }
-    var modeDescription: String { get }
-//    var allCases: [StringTransfomerOption] { get }
-}
-
 /// Protocol for any entity that could transform given string.
 protocol StringTransformerProtocol: AnyObject {
     /// Transformer display name.
     static var name: String { get }
     /// Transforms given string to any nonsense.
     func transform(_ string: String) -> AnyPublisher<String, Error>
-}
-
-protocol OptionedStringTransformedProtocol: StringTransformerProtocol {
-    associatedtype Mode = RawRepresentable & CaseIterable & StringTransfomerOption
-    var currentMode: Mode { get }
 }
 
 enum StringTransformerType: CaseIterable {
@@ -45,15 +34,6 @@ enum StringTransformerType: CaseIterable {
         switch self {
         case .balaboba(let mode): return BalabobaStringTransformer(for: mode)
         case .smiley(let mode): return SmileyStringTransformer(for: mode)
-        }
-    }
-    
-    var availableModes: [StringTransformerType] {
-        switch self {
-        case .balaboba: return BalabobaStringTransformer.Modes.allCases.enumerated()
-                .map { StringTransformerType.balaboba(mode: .init(rawValue: $0.offset) ?? .none) }
-        case .smiley: return SmileyStringTransformer.Modes.allCases.enumerated()
-                .map { StringTransformerType.smiley(mode: .init(rawValue: $0.offset) ?? .happy) }
         }
     }
     
@@ -73,7 +53,13 @@ enum StringTransformerType: CaseIterable {
     }
     
     static var allCases: [StringTransformerType] {
-        [.balaboba(mode: .none), .smiley(mode: .happy)]
+        [
+            .balaboba(mode: .none),
+            .balaboba(mode: .advertisingSlogans),
+            .balaboba(mode: .conspiracyTheories),
+            .smiley(mode: .happy),
+            .smiley(mode: .sad)
+        ]
     }
     
 }
