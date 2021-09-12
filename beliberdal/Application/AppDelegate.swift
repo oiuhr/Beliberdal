@@ -25,8 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = .accentPink
         
-        let vc = UINavigationController(rootViewController: MainViewController())
-        vc.isNavigationBarHidden = true
+        let mainCoordinator = MainCoordinator()
+        mainCoordinator.start()
+        
+        let vc = mainCoordinator.toPresent
         vc.tabBarItem = .init(title: "Home", image: .init(systemName: "house.fill"), tag: 0)
         let vc2 = UINavigationController(rootViewController: FavouritesViewController())
         vc2.tabBarItem = .init(title: "Favourites", image: .init(systemName: "bookmark.fill"), tag: 1)
