@@ -10,12 +10,27 @@ import Combine
 
 class MainViewController: ViewController<MainView> {
     
-    private let viewModel = MainViewModel()
+    // MARK: - Properties
+    
+    private let viewModel: MainViewModelProtocol
     private lazy var cancellable = Set<AnyCancellable>()
+    
+    // MARK: - Lifecycle
+    
+    init(_ vm: MainViewModelProtocol) {
+        self.viewModel = vm
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.isNavigationBarHidden = true
         bind()
     }
     
@@ -34,6 +49,8 @@ class MainViewController: ViewController<MainView> {
         tabBar.tabBar.backgroundImage = nil
         tabBar.tabBar.shadowImage = nil
     }
+    
+    // MARK: - Methods
     
     private func bind() {
         viewModel.output.currentTransformerMode
@@ -60,7 +77,7 @@ class MainViewController: ViewController<MainView> {
     
     @objc
     private func mode() {
-        navigationController?.pushViewController(SettingsViewController(), animated: true)
+        viewModel.input.needsModeChange.send()
     }
     
     private func handleError() {

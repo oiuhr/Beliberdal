@@ -12,8 +12,8 @@ final class SettingsViewController: ViewController<SettingsView> {
     
     // MARK: - Properties
     
-    typealias DataSource = UITableViewDiffableDataSource<StringTransformerType, StringTransformerOption>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<StringTransformerType, StringTransformerOption>
+    typealias DataSource = UITableViewDiffableDataSource<String, StringTransformerType>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<String, StringTransformerType>
     private lazy var dataSource: DataSource = createDataSource()
     
     /// https://developer.apple.com/documentation/uikit/uitableviewdelegate/handling_row_selection_in_a_table_view
@@ -28,10 +28,6 @@ final class SettingsViewController: ViewController<SettingsView> {
         self.viewModel = vm
         
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    convenience init() {
-        self.init(SettingsViewModel(SettingsService.shared))
     }
     
     required init?(coder: NSCoder) {
@@ -60,19 +56,26 @@ final class SettingsViewController: ViewController<SettingsView> {
     // MARK: - Methods
     
     private func setupUI() {
-        title = "Beliberdal Settings"
+        title = "Settings"
         mainView.tableView.delegate = self
     }
     
     private func bind() {
         viewModel.output.optionList
             .sink { [weak self] options in
-                var snapshot = Snapshot()
+                var dict: [String : [StringTransformerType]] = [:]
                 for option in options {
-                    let items = option.availableModes.map { StringTransformerOption(option: $0, name: $0.modeName) }
-                    snapshot.appendSections([option])
-                    snapshot.appendItems(items, toSection: option)
+                    if let value = dict[option.name] {
+                        dict[option.name] = value + [option]
+                    } else { dict[option.name] = [option] }
                 }
+        
+                var snapshot = Snapshot()
+                for option in dict.sorted(by: { $0.key < $1.key }) {
+                    snapshot.appendSections([option.key])
+                    snapshot.appendItems(option.value, toSection: option.key)
+                }
+                
                 self?.dataSource.apply(snapshot, animatingDifferences: false)
             }
             .store(in: &cancellable)
@@ -83,20 +86,15 @@ final class SettingsViewController: ViewController<SettingsView> {
 // MARK: - UITableViewDataSource
 
 extension SettingsViewController {
-
-    struct StringTransformerOption: Hashable {
-        let option: StringTransformerType
-        let name: String
-    }
     
     private func createDataSource() -> DataSource {
         DataSource(tableView: mainView.tableView) { [weak self] tableView, indexPath, itemIdentifier in
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsView.cellReuseIdentifier, for: indexPath)
-            cell.textLabel?.text = itemIdentifier.name
+            cell.textLabel?.text = itemIdentifier.modeName
             cell.textLabel?.font = .systemFont(ofSize: 14)
             cell.tintColor = .accentPink
             
-            let selected = itemIdentifier.option == self?.viewModel.output.currentMode.value
+            let selected = itemIdentifier == self?.viewModel.output.currentMode.value
             cell.accessoryType = selected ? .checkmark : .none
             if selected { self?.lastlySelectedCell = cell }
     
@@ -120,7 +118,7 @@ extension SettingsViewController: UITableViewDelegate {
         lastlySelectedCell = cell
         
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        viewModel.input.switchMode.send(item.option)
+        viewModel.input.switchMode.send(item)
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -133,7 +131,7 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: SettingsView.headerReuseIdentifier)
         let section = dataSource.snapshot().sectionIdentifiers[section]
-        view?.textLabel?.text = section.name
+        view?.textLabel?.text = section
         
         return view
     }

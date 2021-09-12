@@ -12,7 +12,7 @@ final class SmileyStringTransformer: StringTransformerProtocol {
     
     static var name: String { "Smiles" }
     
-    enum Modes: Int, CaseIterable, StringTransfomerOption {
+    enum Modes: Int, CaseIterable, Codable {
         case happy
         case sad
         
@@ -38,7 +38,7 @@ final class SmileyStringTransformer: StringTransformerProtocol {
     }
     
     func transform(_ string: String) -> AnyPublisher<String, Error> {
-        return Just("\(string) + \(currentMode.smiley)")
+        return Just("\(string) \(currentMode.smiley)")
             .compactMap { $0 }
             .setFailureType(to: Error.self)
             .eraseToAnyPublisher()

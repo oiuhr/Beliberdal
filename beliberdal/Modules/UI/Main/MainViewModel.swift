@@ -18,10 +18,18 @@ struct MainViewModelOutput {
     let currentTransformerMode: AnyPublisher<StringTransformerType, Never>
 }
 
-class MainViewModel {
+protocol MainViewModelProtocol {
+    var input: MainViewModelInput { get }
+    var output: MainViewModelOutput { get }
+}
+
+class MainViewModel: MainViewModelProtocol {
     
     let input: MainViewModelInput
     let output: MainViewModelOutput
+    
+    /// navigation
+    var openSettings: Action?
     
     /// input
     private let transformAction = PassthroughSubject<String, Never>()
@@ -31,11 +39,15 @@ class MainViewModel {
     private let result = CurrentValueSubject<String, Error>("")
     
     /// local
-    private let transformer = BeliberdalService()
-    private let settingsService: SettingsServiceProtocol = SettingsService.shared
+    private let transformer: BeliberdalService
+    private let settingsService: SettingsServiceProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    init() {
+    init(settingsService: SettingsServiceProtocol,
+         beliberdalService: BeliberdalService) {
+        
+        self.settingsService = settingsService
+        self.transformer = beliberdalService
         
         input = .init(transformAction: transformAction, needsModeChange: needsModeChange)
         output = .init(transformResult: result.eraseToAnyPublisher(), currentTransformerMode: settingsService.strategy)
@@ -56,6 +68,10 @@ class MainViewModel {
                 print(transformed)
                 result.send(transformed)
             }
+            .store(in: &cancellable)
+        
+        needsModeChange
+            .sink { [weak self] in self?.openSettings?() }
             .store(in: &cancellable)
     }
     

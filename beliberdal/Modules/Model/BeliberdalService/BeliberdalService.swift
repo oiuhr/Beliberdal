@@ -21,10 +21,6 @@ final class BeliberdalService {
         bind()
     }
     
-    convenience init() {
-        self.init(settingsService: SettingsService.shared)
-    }
-    
     private func bind() {
         settings.strategy
             .sink { [weak self] mode in
