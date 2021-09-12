@@ -14,7 +14,7 @@ enum StringTransformerType: CaseIterable {
     
     /// Mock used for testing purposes.
     case smiley(mode: SmileyStringTransformer.Modes)
-
+    
     /// Entity for case.
     var entity: StringTransformerProtocol {
         switch self {
@@ -61,6 +61,42 @@ extension StringTransformerType: Hashable {
         case (.smiley(let lm), .smiley(let rm)):
             return lm == rm
         default: return false
+        }
+    }
+    
+}
+
+extension StringTransformerType: Codable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case balaboba
+        case smiley
+    }
+    
+    enum StringTransformerTypeCodingError: Error {
+        case decoding(String)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        if let value = try? values.decode(BalabobaStringTransformer.Modes.self, forKey: .balaboba) {
+            self = .balaboba(mode: value)
+            return
+        }
+        if let value = try? values.decode(SmileyStringTransformer.Modes.self, forKey: .smiley) {
+            self = .smiley(mode: value)
+            return
+        }
+        throw StringTransformerTypeCodingError.decoding("\(dump(values))")
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        switch self {
+        case .balaboba(let mode):
+            try container.encode(mode, forKey: .balaboba)
+        case .smiley(let mode):
+            try container.encode(mode, forKey: .smiley)
         }
     }
     

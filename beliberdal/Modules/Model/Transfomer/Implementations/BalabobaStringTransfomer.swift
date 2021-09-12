@@ -12,7 +12,7 @@ final class BalabobaStringTransformer: StringTransformerProtocol {
 
     static var name: String { "Balaboba" }
     
-    enum Modes: Int, CaseIterable {
+    enum Modes: Int, CaseIterable, Codable {
         case none
         case conspiracyTheories
         case tvReports

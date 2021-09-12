@@ -7,7 +7,7 @@
 
 import Combine
 
-protocol SettingsServiceProtocol {
+protocol SettingsServiceProtocol: AnyObject {
     var strategy: AnyPublisher<StringTransformerType, Never> { get }
     func setStrategy(_ strategy: StringTransformerType)
 }

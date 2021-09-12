@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */; };
 		CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
 		CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */; };
 		CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6A26D4AC9700C33D0D /* MainContentView.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTopBar.swift; sourceTree = "<group>"; };
 		CD144E6A26D4AC9700C33D0D /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
@@ -189,6 +191,14 @@
 			path = SettingsService;
 			sourceTree = "<group>";
 		};
+		CD4BCE2C26E9D90900FA126A /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		CD7BF77526CC511700EF287D /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +254,7 @@
 		CD7BF77B26CC53AA00EF287D /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				CD4BCE2C26E9D90900FA126A /* UserDefaults */,
 				CDB804BD269111FE00DB4B14 /* beliberdal.xcdatamodeld */,
 			);
 			path = Storage;
@@ -510,6 +521,7 @@
 				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
 				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
 				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
+				CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
 				CD4BCE2B26E9ABA400FA126A /* StringTransformerType.swift in Sources */,
 				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,

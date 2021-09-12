@@ -12,7 +12,7 @@ final class SmileyStringTransformer: StringTransformerProtocol {
     
     static var name: String { "Smiles" }
     
-    enum Modes: Int, CaseIterable {
+    enum Modes: Int, CaseIterable, Codable {
         case happy
         case sad
         

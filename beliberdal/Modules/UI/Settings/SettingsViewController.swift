@@ -30,10 +30,6 @@ final class SettingsViewController: ViewController<SettingsView> {
         super.init(nibName: nil, bundle: nil)
     }
     
-    convenience init() {
-        self.init(SettingsViewModel(SettingsService.shared))
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

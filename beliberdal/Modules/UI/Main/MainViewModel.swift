@@ -31,11 +31,14 @@ class MainViewModel {
     private let result = CurrentValueSubject<String, Error>("")
     
     /// local
-    private let transformer = BeliberdalService()
-    private let settingsService: SettingsServiceProtocol = SettingsService.shared
+    private let transformer: BeliberdalService
+    private let settingsService: SettingsServiceProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    init() {
+    init(settingsService: SettingsServiceProtocol, beliberdalService: BeliberdalService) {
+        
+        self.settingsService = settingsService
+        self.transformer = beliberdalService
         
         input = .init(transformAction: transformAction, needsModeChange: needsModeChange)
         output = .init(transformResult: result.eraseToAnyPublisher(), currentTransformerMode: settingsService.strategy)

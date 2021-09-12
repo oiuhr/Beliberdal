@@ -9,24 +9,32 @@ import Combine
 
 final class SettingsService: SettingsServiceProtocol {
     
-    private let _strategy: CurrentValueSubject<StringTransformerType, Never> = .init(.smiley(mode: .happy))
+    private let _strategy: CurrentValueSubject<StringTransformerType, Never>
+    private let storage: SettingsStorageProtocol
+    
     let strategy: AnyPublisher<StringTransformerType, Never>
     
-    private var cancellable = Set<AnyCancellable>()
-    
-    static let shared = SettingsService()
-    
-    init(_ strategy: StringTransformerType) {
-        self._strategy.send(strategy)
-        self.strategy = _strategy.eraseToAnyPublisher()
+    init(_ storage: SettingsStorageProtocol) {
+        self.storage = storage
+        self._strategy = CurrentValueSubject<StringTransformerType, Never>(storage.strategy)
+        self.strategy = self._strategy.eraseToAnyPublisher()
     }
-    
-    convenience init() {
-        self.init(.smiley(mode: .happy))
-    }
-    
+
     func setStrategy(_ strategy: StringTransformerType) {
-        self._strategy.value = strategy
+        storage.strategy = strategy
+        _strategy.send(strategy)
     }
+    
+}
+
+protocol SettingsStorageProtocol: AnyObject {
+    var strategy: StringTransformerType { get set }
+}
+
+class SettingsStorage: SettingsStorageProtocol {
+    private static var strategyDefaultsKey: String { "currentStrategy" }
+    
+    @CodableDefaults(strategyDefaultsKey, defaultValue: StringTransformerType.smiley(mode: .happy))
+    var strategy: StringTransformerType
 }
 

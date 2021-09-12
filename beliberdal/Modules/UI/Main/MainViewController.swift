@@ -10,8 +10,18 @@ import Combine
 
 class MainViewController: ViewController<MainView> {
     
-    private let viewModel = MainViewModel()
+    private let viewModel: MainViewModel
     private lazy var cancellable = Set<AnyCancellable>()
+    
+    init(_ vm: MainViewModel) {
+        self.viewModel = vm
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +70,7 @@ class MainViewController: ViewController<MainView> {
     
     @objc
     private func mode() {
-        navigationController?.pushViewController(SettingsViewController(), animated: true)
+//        navigationController?.pushViewController(SettingsViewController(<#SettingsViewModelProtocol#>), animated: true)
     }
     
     private func handleError() {
