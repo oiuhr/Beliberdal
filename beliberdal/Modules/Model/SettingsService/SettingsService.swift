@@ -26,15 +26,3 @@ final class SettingsService: SettingsServiceProtocol {
     }
     
 }
-
-protocol SettingsStorageProtocol: AnyObject {
-    var strategy: StringTransformerType { get set }
-}
-
-class SettingsStorage: SettingsStorageProtocol {
-    private static var strategyDefaultsKey: String { "currentStrategy" }
-    
-    @CodableDefaults(strategyDefaultsKey, defaultValue: StringTransformerType.smiley(mode: .happy))
-    var strategy: StringTransformerType
-}
-

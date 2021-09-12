@@ -33,7 +33,6 @@ struct CodableDefaults<T: Codable> {
             } else {
                 UserDefaults.standard.removeObject(forKey: key)
             }
-            UserDefaults.standard.synchronize()
         }
     }
 }

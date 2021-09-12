@@ -41,10 +41,20 @@ enum StringTransformerType: CaseIterable {
     static var allCases: [StringTransformerType] {
         [
             .balaboba(mode: .none),
+            .balaboba(mode: .horoscopes),
+            .balaboba(mode: .wikiInShort),
+            .balaboba(mode: .shortStories),
+            .balaboba(mode: .folkWisdom),
+            .balaboba(mode: .quotes),
+            .balaboba(mode: .instagramCaptions),
             .balaboba(mode: .advertisingSlogans),
+            .balaboba(mode: .movieSynopsis),
+            .balaboba(mode: .toasts),
+            .balaboba(mode: .tvReports),
             .balaboba(mode: .conspiracyTheories),
-            .smiley(mode: .happy),
-            .smiley(mode: .sad)
+            
+            .smiley(mode: .sad),
+            .smiley(mode: .happy)
         ]
     }
     

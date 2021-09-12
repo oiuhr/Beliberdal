@@ -25,9 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = .accentPink
         
-        let settingsService = SettingsService(SettingsStorage())
-        let vc = UINavigationController(rootViewController: MainViewController(.init(settingsService: settingsService, beliberdalService: .init(settingsService: settingsService))))
-        vc.isNavigationBarHidden = true
+        let mainCoordinator = MainCoordinator()
+        mainCoordinator.start()
+        
+        let vc = mainCoordinator.toPresent
         vc.tabBarItem = .init(title: "Home", image: .init(systemName: "house.fill"), tag: 0)
         let vc2 = UIViewController()
         vc2.view.backgroundColor = .cyan

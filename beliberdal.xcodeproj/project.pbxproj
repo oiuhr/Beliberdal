@@ -21,6 +21,8 @@
 		CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
 		CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
 		CD4BCE2B26E9ABA400FA126A /* StringTransformerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */; };
+		CD5A015126EE588600351FF4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015026EE588600351FF4 /* Coordinator.swift */; };
+		CD5A015326EE834F00351FF4 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015226EE834F00351FF4 /* SettingsStorage.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
@@ -69,6 +71,8 @@
 		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerType.swift; sourceTree = "<group>"; };
+		CD5A015026EE588600351FF4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CD5A015226EE834F00351FF4 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			children = (
 				CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */,
 				CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */,
+				CD5A015226EE834F00351FF4 /* SettingsStorage.swift */,
 				CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */,
 			);
 			path = SettingsService;
@@ -197,6 +202,14 @@
 				CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		CD5A014F26EE587A00351FF4 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A015026EE588600351FF4 /* Coordinator.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		CD7BF77526CC511700EF287D /* Application */ = {
@@ -245,6 +258,7 @@
 		CD7BF77A26CC539D00EF287D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CD5A014F26EE587A00351FF4 /* Navigation */,
 				CD7BF77C26CC542600EF287D /* Networking */,
 				CD7BF77B26CC53AA00EF287D /* Storage */,
 			);
@@ -511,6 +525,7 @@
 				CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */,
 				CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */,
 				CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */,
+				CD5A015326EE834F00351FF4 /* SettingsStorage.swift in Sources */,
 				CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */,
 				CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */,
 				CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */,
@@ -523,6 +538,7 @@
 				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
 				CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
+				CD5A015126EE588600351FF4 /* Coordinator.swift in Sources */,
 				CD4BCE2B26E9ABA400FA126A /* StringTransformerType.swift in Sources */,
 				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
