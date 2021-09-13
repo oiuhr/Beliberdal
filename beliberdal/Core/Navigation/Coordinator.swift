@@ -23,10 +23,12 @@ class MainCoordinator: Coordinator {
     
     private let settingsService: SettingsServiceProtocol
     private let beliberdalService: BeliberdalService
+    private let favouritesStorage: FavouritesStorageProtocol
     
-    init() {
+    init(favouritesStorage: FavouritesStorageProtocol) {
         settingsService = SettingsService(SettingsStorage())
         beliberdalService = BeliberdalService(settingsService: settingsService)
+        self.favouritesStorage = favouritesStorage
     }
     
     func start() {

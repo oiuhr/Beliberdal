@@ -26,6 +26,14 @@
 		CD4BCE2B26E9ABA400FA126A /* StringTransformerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */; };
 		CD5A015126EE588600351FF4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015026EE588600351FF4 /* Coordinator.swift */; };
 		CD5A015326EE834F00351FF4 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015226EE834F00351FF4 /* SettingsStorage.swift */; };
+		CD5A016026EF4AC800351FF4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015F26EF4AC800351FF4 /* CoreDataStack.swift */; };
+		CD5A016226EF574700351FF4 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016126EF574700351FF4 /* FavouritesViewModel.swift */; };
+		CD5A016526EF590300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016326EF590300351FF4 /* TransformerResult+CoreDataClass.swift */; };
+		CD5A016626EF590300351FF4 /* TransformerResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016426EF590300351FF4 /* TransformerResult+CoreDataProperties.swift */; };
+		CD5A016826EF599C00351FF4 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016726EF599C00351FF4 /* FavouritesStorage.swift */; };
+		CD5A016B26EF994100351FF4 /* FavouritesStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016A26EF994100351FF4 /* FavouritesStorageProtocol.swift */; };
+		CD5A016D26EF994C00351FF4 /* TransformerResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016C26EF994C00351FF4 /* TransformerResultDTO.swift */; };
+		CD5A016F26EF99CC00351FF4 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016E26EF99CC00351FF4 /* PlaceholderView.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
@@ -73,12 +81,20 @@
 		CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerType.swift; sourceTree = "<group>"; };
-		CD5A015026EE588600351FF4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		CD5A015226EE834F00351FF4 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
 		CD4BCE2326E891CE00FA126A /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
 		CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerType.swift; sourceTree = "<group>"; };
+		CD5A015026EE588600351FF4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		CD5A015226EE834F00351FF4 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		CD5A015F26EF4AC800351FF4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		CD5A016126EF574700351FF4 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		CD5A016326EF590300351FF4 /* TransformerResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransformerResult+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CD5A016426EF590300351FF4 /* TransformerResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransformerResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CD5A016726EF599C00351FF4 /* FavouritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorage.swift; sourceTree = "<group>"; };
+		CD5A016A26EF994100351FF4 /* FavouritesStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorageProtocol.swift; sourceTree = "<group>"; };
+		CD5A016C26EF994C00351FF4 /* TransformerResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformerResultDTO.swift; sourceTree = "<group>"; };
+		CD5A016E26EF99CC00351FF4 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +218,16 @@
 			path = SettingsService;
 			sourceTree = "<group>";
 		};
+		CD4BCE2726E8940F00FA126A /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A017026EF99E500351FF4 /* Views */,
+				CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */,
+				CD5A016126EF574700351FF4 /* FavouritesViewModel.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
 		CD4BCE2C26E9D90900FA126A /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,14 +244,58 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		CD4BCE2726E8940F00FA126A /* Favourites */ = {
+		CD5A015826EE91CE00351FF4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CDB804BD269111FE00DB4B14 /* beliberdal.xcdatamodeld */,
+				CD5A015D26EE922100351FF4 /* CoreDataModels */,
+				CD5A015F26EF4AC800351FF4 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CD5A015D26EE922100351FF4 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A015E26EE922900351FF4 /* TransformerResult */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		CD5A015E26EE922900351FF4 /* TransformerResult */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A016326EF590300351FF4 /* TransformerResult+CoreDataClass.swift */,
+				CD5A016426EF590300351FF4 /* TransformerResult+CoreDataProperties.swift */,
+			);
+			path = TransformerResult;
+			sourceTree = "<group>";
+		};
+		CD5A016926EF992A00351FF4 /* FavouritesStorage */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A016A26EF994100351FF4 /* FavouritesStorageProtocol.swift */,
+				CD5A016726EF599C00351FF4 /* FavouritesStorage.swift */,
+				CD5A016C26EF994C00351FF4 /* TransformerResultDTO.swift */,
+			);
+			path = FavouritesStorage;
+			sourceTree = "<group>";
+		};
+		CD5A017026EF99E500351FF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				CD4BCE2326E891CE00FA126A /* FavouritesView.swift */,
-				CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */,
-				CD4BCE2826E8943000FA126A /* FavouritesViewController.swift */,
+				CD5A017126EF99EB00351FF4 /* Cells */,
 			);
-			path = Favourites;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD5A017126EF99EB00351FF4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CD4BCE2526E8920500FA126A /* FavouritesTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CD7BF77526CC511700EF287D /* Application */ = {
@@ -285,7 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				CD4BCE2C26E9D90900FA126A /* UserDefaults */,
-				CDB804BD269111FE00DB4B14 /* beliberdal.xcdatamodeld */,
+				CD5A015826EE91CE00351FF4 /* CoreData */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -312,6 +382,7 @@
 		CD7BF77E26CC703500EF287D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD5A016926EF992A00351FF4 /* FavouritesStorage */,
 				CD4BCE1926E66D8800FA126A /* BeliberdalService */,
 				CD4BCE1C26E6A7A200FA126A /* SettingsService */,
 				CD4BCE1126E6661F00FA126A /* Transfomer */,
@@ -333,6 +404,7 @@
 			children = (
 				CD7BF78326CC743400EF287D /* ModuleComponents */,
 				CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */,
+				CD5A016E26EF99CC00351FF4 /* PlaceholderView.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -536,12 +608,16 @@
 				CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */,
 				CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */,
 				CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */,
+				CD5A016626EF590300351FF4 /* TransformerResult+CoreDataProperties.swift in Sources */,
 				CD7BF78526CC744700EF287D /* ViewController.swift in Sources */,
 				CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */,
+				CD5A016826EF599C00351FF4 /* FavouritesStorage.swift in Sources */,
 				CD4BCE1526E6668E00FA126A /* SmileyStringTransfomer.swift in Sources */,
+				CD5A016026EF4AC800351FF4 /* CoreDataStack.swift in Sources */,
 				CD4BCE2426E891CE00FA126A /* FavouritesView.swift in Sources */,
 				CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */,
 				CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */,
+				CD5A016226EF574700351FF4 /* FavouritesViewModel.swift in Sources */,
 				CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */,
 				CD5A015326EE834F00351FF4 /* SettingsStorage.swift in Sources */,
 				CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */,
@@ -550,8 +626,12 @@
 				CD7BF78B26CC774700EF287D /* NetworkClient.swift in Sources */,
 				CD7BF78726CC746E00EF287D /* MainView.swift in Sources */,
 				CDB804B5269111FE00DB4B14 /* AppDelegate.swift in Sources */,
+				CD5A016D26EF994C00351FF4 /* TransformerResultDTO.swift in Sources */,
 				CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */,
 				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
+				CD5A016F26EF99CC00351FF4 /* PlaceholderView.swift in Sources */,
+				CD5A016526EF590300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */,
+				CD5A016B26EF994100351FF4 /* FavouritesStorageProtocol.swift in Sources */,
 				CD4BCE2626E8920500FA126A /* FavouritesTableViewCell.swift in Sources */,
 				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
 				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
