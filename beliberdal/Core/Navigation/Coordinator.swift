@@ -32,7 +32,9 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vm = MainViewModel(settingsService: settingsService, beliberdalService: beliberdalService)
+        let vm = MainViewModel(settingsService: settingsService,
+                               beliberdalService: beliberdalService,
+                               favouritesStorage: favouritesStorage)
         vm.openSettings = openSettings
         let vc = MainViewController(vm)
         navigationController.pushViewController(vc, animated: true)

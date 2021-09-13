@@ -11,11 +11,12 @@ import Combine
 struct MainViewModelInput {
     let transformAction: PassthroughSubject<String, Never>
     let needsModeChange: PassthroughSubject<Void, Never>
+    let addToFavouritesAction: PassthroughSubject<Void, Never>
 }
 
 struct MainViewModelOutput {
     let transformResult: AnyPublisher<String, Error>
-    let currentTransformerMode: AnyPublisher<StringTransformerType, Never>
+    let currentTransformerMode: AnyPublisher<String, Never>
 }
 
 protocol MainViewModelProtocol {
@@ -34,23 +35,28 @@ class MainViewModel: MainViewModelProtocol {
     /// input
     private let transformAction = PassthroughSubject<String, Never>()
     private let needsModeChange = PassthroughSubject<Void, Never>()
+    private let addToFavouritesAction = PassthroughSubject<Void, Never>()
     
     /// output
     private let result = CurrentValueSubject<String, Error>("")
+    private let transformerName = CurrentValueSubject<String, Never>("")
     
     /// local
     private let transformer: BeliberdalService
     private let settingsService: SettingsServiceProtocol
+    private let favouritesStorage: FavouritesStorageProtocol
     private var cancellable = Set<AnyCancellable>()
     
     init(settingsService: SettingsServiceProtocol,
-         beliberdalService: BeliberdalService) {
+         beliberdalService: BeliberdalService,
+         favouritesStorage: FavouritesStorageProtocol) {
         
         self.settingsService = settingsService
         self.transformer = beliberdalService
+        self.favouritesStorage = favouritesStorage
         
-        input = .init(transformAction: transformAction, needsModeChange: needsModeChange)
-        output = .init(transformResult: result.eraseToAnyPublisher(), currentTransformerMode: settingsService.strategy)
+        input = .init(transformAction: transformAction, needsModeChange: needsModeChange, addToFavouritesAction: addToFavouritesAction)
+        output = .init(transformResult: result.eraseToAnyPublisher(), currentTransformerMode: transformerName.eraseToAnyPublisher())
         
         transformAction
             .setFailureType(to: Error.self)
@@ -72,6 +78,26 @@ class MainViewModel: MainViewModelProtocol {
         
         needsModeChange
             .sink { [weak self] in self?.openSettings?() }
+            .store(in: &cancellable)
+        
+        addToFavouritesAction
+            .compactMap { [weak self] _ -> TransformerResultDTO? in
+                guard let result = self?.result.value,
+                      !result.isEmpty,
+                      let transformerName = self?.transformerName.value else { return nil }
+                return TransformerResultDTO(id: UUID(),
+                                            transformerName: transformerName,
+                                            content: result)
+            }
+            .sink { [weak self] item in
+                self?.favouritesStorage.save(item)
+            }
+            .store(in: &cancellable)
+        
+        settingsService.strategy
+            .sink { [weak self] value in
+                self?.transformerName.value = "\(value.name) – \(value.modeName)"
+            }
             .store(in: &cancellable)
     }
     

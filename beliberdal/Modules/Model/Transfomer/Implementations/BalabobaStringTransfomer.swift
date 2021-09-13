@@ -10,7 +10,7 @@ import Combine
 
 final class BalabobaStringTransformer: StringTransformerProtocol {
 
-    static var name: String { "Balaboba" }
+    static var name: String { "Балабоба" }
     
     enum Modes: Int, CaseIterable, Codable {
         case none

@@ -10,7 +10,7 @@ import Foundation
 
 final class SmileyStringTransformer: StringTransformerProtocol {
     
-    static var name: String { "Smiles" }
+    static var name: String { "Смайлики" }
     
     enum Modes: Int, CaseIterable, Codable {
         case happy

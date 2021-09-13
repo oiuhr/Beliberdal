@@ -55,7 +55,7 @@ class MainViewController: ViewController<MainView> {
     private func bind() {
         viewModel.output.currentTransformerMode
             .sink { [unowned self] value in
-                mainView.switchModeButton.setTitle(value.name, for: .normal)
+                mainView.switchModeButton.setTitle(value, for: .normal)
             }
             .store(in: &cancellable)
         
@@ -67,6 +67,7 @@ class MainViewController: ViewController<MainView> {
         
         mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
         mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
+        mainView.contentView.favouriteButton.addTarget(self, action: #selector(save), for: .touchUpInside)
     }
     
     @objc
@@ -78,6 +79,11 @@ class MainViewController: ViewController<MainView> {
     @objc
     private func mode() {
         viewModel.input.needsModeChange.send()
+    }
+    
+    @objc
+    private func save() {
+        viewModel.input.addToFavouritesAction.send()
     }
     
     private func handleError() {
