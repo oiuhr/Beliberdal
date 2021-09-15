@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD051BFE26F1BAA200D9ED75 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051BFD26F1BAA200D9ED75 /* UIImage.swift */; };
 		CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */; };
 		CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
 		CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */; };
@@ -97,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD051BFD26F1BAA200D9ED75 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTopBar.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF9DA2126CDBDCB00F55824 /* UIColor.swift */,
+				CD051BFD26F1BAA200D9ED75 /* UIImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				CD28EA6326DEE32A000CF91D /* SettingsView.swift in Sources */,
 				CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */,
 				CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */,
+				CD051BFE26F1BAA200D9ED75 /* UIImage.swift in Sources */,
 				CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */,
 				CD5A016626EF590300351FF4 /* TransformerResult+CoreDataProperties.swift in Sources */,
 				CD7BF78526CC744700EF287D /* ViewController.swift in Sources */,

@@ -15,6 +15,13 @@ class CatView: UIView {
         
         return $0
     } (UIImageView())
+    
+    lazy var tapMeAccessoryImageView: UIImageView = {
+        $0.image = .tapMe
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        
+        return $0
+    } (UIImageView())
 
     lazy var fireButton: FireButton = {
         $0.setImage(.init(systemName: "arrow.clockwise.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -52,6 +59,12 @@ class CatView: UIView {
             fireButton.widthAnchor.constraint(equalToConstant: 49),
             fireButton.heightAnchor.constraint(equalToConstant: 49),
             fireButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -21)
+        ])
+        
+        addSubview(tapMeAccessoryImageView)
+        NSLayoutConstraint.activate([
+            tapMeAccessoryImageView.leadingAnchor.constraint(equalTo: fireButton.trailingAnchor, constant: 13),
+            tapMeAccessoryImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -35)
         ])
     }
     
