@@ -12,6 +12,7 @@ struct MainViewModelInput {
     let transformAction: PassthroughSubject<String, Never>
     let needsModeChange: PassthroughSubject<Void, Never>
     let addToFavouritesAction: PassthroughSubject<Void, Never>
+    let openCatsAction: PassthroughSubject<Void, Never>
 }
 
 struct MainViewModelOutput {
@@ -31,11 +32,13 @@ class MainViewModel: MainViewModelProtocol {
     
     /// navigation
     var openSettings: Action?
+    var openCats: Action?
     
     /// input
     private let transformAction = PassthroughSubject<String, Never>()
     private let needsModeChange = PassthroughSubject<Void, Never>()
     private let addToFavouritesAction = PassthroughSubject<Void, Never>()
+    private let openCatsAction = PassthroughSubject<Void, Never>()
     
     /// output
     private let result = CurrentValueSubject<String, Error>("")
@@ -55,8 +58,12 @@ class MainViewModel: MainViewModelProtocol {
         self.transformer = beliberdalService
         self.favouritesStorage = favouritesStorage
         
-        input = .init(transformAction: transformAction, needsModeChange: needsModeChange, addToFavouritesAction: addToFavouritesAction)
-        output = .init(transformResult: result.eraseToAnyPublisher(), currentTransformerMode: transformerName.eraseToAnyPublisher())
+        input = .init(transformAction: transformAction,
+                      needsModeChange: needsModeChange,
+                      addToFavouritesAction: addToFavouritesAction,
+                      openCatsAction: openCatsAction)
+        output = .init(transformResult: result.eraseToAnyPublisher(),
+                       currentTransformerMode: transformerName.eraseToAnyPublisher())
         
         transformAction
             .setFailureType(to: Error.self)
@@ -92,6 +99,10 @@ class MainViewModel: MainViewModelProtocol {
             .sink { [weak self] item in
                 self?.favouritesStorage.save(item)
             }
+            .store(in: &cancellable)
+        
+        openCatsAction
+            .sink { [weak self] in self?.openCats?() }
             .store(in: &cancellable)
         
         settingsService.strategy

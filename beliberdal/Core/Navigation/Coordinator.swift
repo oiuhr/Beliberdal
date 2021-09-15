@@ -36,6 +36,7 @@ class MainCoordinator: Coordinator {
                                beliberdalService: beliberdalService,
                                favouritesStorage: favouritesStorage)
         vm.openSettings = openSettings
+        vm.openCats = openCats
         let vc = MainViewController(vm)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -45,4 +46,12 @@ class MainCoordinator: Coordinator {
         let vc = SettingsViewController(vm)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func openCats() {
+        let catService = CatService(networkClient: NetworkClient(), requestBuilder: RequestBuilder())
+        let vm = CatViewModel(catService: catService)
+        let vc = CatViewController(vm)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
 }

@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.tabBarItem = .init(title: "Home", image: .init(systemName: "house.fill"), tag: 0)
         
         let vc2 = UINavigationController(rootViewController: FavouritesViewController(FavouritesViewModel(favouritesStorage: storage)))
+//        let vc2 = UINavigationController(rootViewController: CatViewController(CatViewModel(catService: CatService(networkClient: NetworkClient(), requestBuilder: RequestBuilder()))))
         vc2.tabBarItem = .init(title: "Favourites", image: .init(systemName: "bookmark.fill"), tag: 1)
         
         let tabBarController = UITabBarController()

@@ -80,6 +80,18 @@ class MainContentView: UIView {
         return $0
     } (UIButton())
     
+    lazy var catsButton: UIButton = {
+        $0.setImage(.init(systemName: "leaf.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.tintColor = .accentPink
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            $0.imageView!.widthAnchor.constraint(equalToConstant: 26),
+            $0.imageView!.heightAnchor.constraint(equalToConstant: 26)
+        ])
+        return $0
+    } (UIButton())
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -150,6 +162,12 @@ class MainContentView: UIView {
         NSLayoutConstraint.activate([
             favouriteButton.leadingAnchor.constraint(equalTo: itemBar.leadingAnchor, constant: 30),
             favouriteButton.centerYAnchor.constraint(equalTo: itemBar.centerYAnchor)
+        ])
+        
+        itemBar.contentView.addSubview(catsButton)
+        NSLayoutConstraint.activate([
+            catsButton.trailingAnchor.constraint(equalTo: itemBar.trailingAnchor, constant: -30),
+            catsButton.centerYAnchor.constraint(equalTo: favouriteButton.centerYAnchor)
         ])
         
         layer.cornerRadius = 10

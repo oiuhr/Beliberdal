@@ -68,6 +68,7 @@ class MainViewController: ViewController<MainView> {
         mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
         mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
         mainView.contentView.favouriteButton.addTarget(self, action: #selector(save), for: .touchUpInside)
+        mainView.contentView.catsButton.addTarget(self, action: #selector(openCats), for: .touchUpInside)
     }
     
     @objc
@@ -79,6 +80,11 @@ class MainViewController: ViewController<MainView> {
     @objc
     private func mode() {
         viewModel.input.needsModeChange.send()
+    }
+    
+    @objc
+    private func openCats() {
+        viewModel.input.openCatsAction.send()
     }
     
     @objc
