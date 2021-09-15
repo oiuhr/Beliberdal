@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = .accentPink
         
-        let storage: FavouritesStorageProtocol = FavouritesStorage()
+        let storage: FavouritesStorageProtocol = FavouritesStorage(container: CoreDataStack(modelName: "beliberdal"))
     
         let mainCoordinator = MainCoordinator(favouritesStorage: storage)
         mainCoordinator.start()

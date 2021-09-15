@@ -8,9 +8,9 @@
 import Foundation
 import CoreData
 
-final class CoreDataStack {
+class CoreDataStack {
 
-    private let container: NSPersistentContainer
+    var container: NSPersistentContainer
 
     init(modelName: String) {
         let container = NSPersistentContainer(name: modelName)

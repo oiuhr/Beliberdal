@@ -18,7 +18,9 @@ enum StringTransformerType: CaseIterable {
     /// Entity for case.
     var entity: StringTransformerProtocol {
         switch self {
-        case .balaboba(let mode): return BalabobaStringTransformer(for: mode)
+        case .balaboba(let mode): return BalabobaStringTransformer(for: mode,
+                                                                      networkClient: NetworkClient(),
+                                                                      requestBuilder: RequestBuilder())
         case .smiley(let mode): return SmileyStringTransformer(for: mode)
         }
     }

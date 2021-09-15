@@ -12,6 +12,34 @@ final class BalabobaStringTransformer: StringTransformerProtocol {
 
     static var name: String { "Балабоба" }
     
+    var currentMode: Modes
+    
+    private let networkClient: NetworkClientProtocol
+    private let requestBuilder: RequestBuilderProtocol
+    
+    init(for mode: Modes, networkClient: NetworkClientProtocol, requestBuilder: RequestBuilderProtocol) {
+        currentMode = mode
+        self.networkClient = networkClient
+        self.requestBuilder = requestBuilder
+    }
+
+    func transform(_ string: String) -> AnyPublisher<String, Error> {
+        let route = BalabobaEndPoint.transform(mode: currentMode.rawValue, query: string)
+        guard let request = RequestBuilder().request(for: route) else {
+            return Fail<String, Error>.init(error: StringTransformerError.undefined)
+                .eraseToAnyPublisher()
+        }
+        
+        return networkClient.perform(request)
+            .decode(type: BalabobaEndPoint.Transform.Response.self, decoder: JSONDecoder())
+            .map { "\($0.query + $0.text)" }
+            .eraseToAnyPublisher()
+    }
+    
+}
+
+extension BalabobaStringTransformer {
+    
     enum Modes: Int, CaseIterable, Codable {
         case none
         case conspiracyTheories
@@ -42,47 +70,6 @@ final class BalabobaStringTransformer: StringTransformerProtocol {
             case .folkWisdom: return "Народные мудрости"
             }
         }
-    }
-    
-    var currentMode: Modes
-    
-    private let networkClient = NetworkClient()
-    
-    init(for mode: Modes) {
-        currentMode = mode
-    }
-
-    func transform(_ string: String) -> AnyPublisher<String, Error> {
-        let body = BalabobaEndpoint.Body(query: string, intro: currentMode.rawValue)
-        let request = jsonPostRequest(endpoint: BalabobaEndpoint.endpoint, jsonBody: body)
-        
-        return networkClient.perform(request)
-            .decode(type: BalabobaEndpoint.Response.self, decoder: JSONDecoder())
-            .map { "\($0.query + $0.text)" }
-            .eraseToAnyPublisher()
-    }
-    
-}
-
-extension BalabobaStringTransformer {
-    
-    struct BalabobaEndpoint {
-        
-        static var endpoint = "https://zeapi.yandex.net/lab/api/yalm/text3"
-        
-        struct Body: Encodable {
-            let query: String
-            let intro: Int
-            let filter: Int = 1
-        }
-        
-        struct Response: Decodable {
-            let bad_query: Int
-            let error: Int
-            let query: String
-            let text: String
-        }
-        
     }
     
 }

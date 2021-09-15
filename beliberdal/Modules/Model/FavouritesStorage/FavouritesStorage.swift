@@ -11,12 +11,12 @@ import CoreData
 
 final class FavouritesStorage: FavouritesStorageProtocol {
     
-    let container = CoreDataStack.init(modelName: "beliberdal")
-    
+    private let container: CoreDataStack
     let itemsPublisher: AnyPublisher<[TransformerResultDTO], Never>
     private let _items: CurrentValueSubject<[TransformerResultDTO], Never> = .init([])
     
-    init() {
+    init(container: CoreDataStack) {
+        self.container = container
         self.itemsPublisher = _items.eraseToAnyPublisher()
         
         reload()

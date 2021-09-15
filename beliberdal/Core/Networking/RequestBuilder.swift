@@ -7,30 +7,30 @@
 
 import Foundation
 
-// MARK: TODO - Tests
-
-struct RequestBuilder {
-    
-    
-    
+protocol RequestBuilderProtocol {
+    func request(for route: APIRouterProtocol) -> URLRequest?
 }
 
-func jsonPostRequest<Body: Encodable>(endpoint: String, jsonBody: Body) -> URLRequest {
-    let url = URL(string: endpoint)!
-    let method = "POST"
-    let encoded = try! JSONEncoder().encode(jsonBody)
-    let headers = [
-        "Accept": "application/json",
-        "Content-Length": "\(encoded.count)",
-        "Content-Type": "application/json",
-        "Connection": "keep-alive"
-    ]
+final class RequestBuilder: RequestBuilderProtocol {
     
-    var request = URLRequest(url: url)
-    request.httpMethod = method
-    request.allHTTPHeaderFields = headers
-    request.httpBody = encoded
-    request.timeoutInterval = 10
+    func request(for route: APIRouterProtocol) -> URLRequest? {
+        guard var url = URL(string: route.mainPath) else { return nil }
+        if route.endpoint != "" { url = url.appendingPathComponent(route.endpoint) }
+        
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = [
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Connection": "keep-alive"
+        ]
+        if let encoded = route.body {
+            request.httpBody = encoded
+            request.allHTTPHeaderFields?["Content-Length"] = "\(encoded.count)"
+        }
+        
+        request.httpMethod = route.httpMethod.rawValue
+        
+        return request
+    }
     
-    return request
 }

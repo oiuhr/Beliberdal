@@ -8,9 +8,7 @@
 import Foundation
 import Combine
 
-// MARK: TODO - Tests
-
-struct NetworkClient {
+struct NetworkClient: NetworkClientProtocol {
     
     private let session: URLSession
     
