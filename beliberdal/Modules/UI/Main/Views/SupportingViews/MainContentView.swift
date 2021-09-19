@@ -24,11 +24,13 @@ class MainContentView: UIView {
         return $0
     } (UILabel())
     
+    let tryedToEnterInput = PassthroughSubject<Void, Never>()
     lazy var inputTextView: UITextView = {
         $0.text = "Пиво"
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.textColor = .fontBlack
         $0.isScrollEnabled = false
+        $0.isEditable = false
         $0.textContainerInset = .zero
         $0.textContainer.lineFragmentPadding = .zero
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +52,7 @@ class MainContentView: UIView {
     } (UILabel())
     
     lazy var outputTextView: UITextView = {
+        $0.text = "Пиво - это тоже деньги."
         $0.accessibilityIdentifier = "output"
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.textColor = .accentPink
@@ -120,6 +123,8 @@ class MainContentView: UIView {
             inputTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30)
         ])
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
+        inputTextView.addGestureRecognizer(tapGestureRecognizer)
         scrollView.addSubview(inputTextView)
         NSLayoutConstraint.activate([
             inputTextView.leadingAnchor.constraint(equalTo: inputTitleLabel.leadingAnchor),
@@ -173,6 +178,11 @@ class MainContentView: UIView {
         layer.cornerRadius = 10
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc
+    private func handleTapGesture() {
+        tryedToEnterInput.send()
     }
     
 }

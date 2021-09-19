@@ -11,11 +11,32 @@ import Combine
 class MainInputView: UIView {
     
     enum Mode {
-        case active
-        case suspended
+        case forced(isOpen: Bool)
+        case opened
+        case still
+        
+        var closeButtonHidden: Bool {
+            switch self {
+            case .forced(let isOpen):
+                return !isOpen
+            case .still:
+                return true
+            case .opened:
+                return false
+            }
+        }
+        
+        var active: Bool {
+            switch self {
+            case .forced, .opened:
+                return true
+            case .still:
+                return false
+            }
+        }
     }
     
-    @Published var mode: Bool = false
+    @Published var mode: Mode = .forced(isOpen: false)
     private var cancellable = Set<AnyCancellable>()
     
     private lazy var closeButton: UIButton = {
@@ -30,14 +51,17 @@ class MainInputView: UIView {
         return $0
     } (RoundedButton())
     
-    private lazy var textView: UITextView = {
+    lazy var textView: UITextView = {
         $0.font = .systemFont(ofSize: 22, weight: .bold)
         $0.textColor = .fontBlack
-        $0.isScrollEnabled = false
+        $0.isScrollEnabled = true
+        $0.showsVerticalScrollIndicator = false
         $0.autocorrectionType = .no
         $0.textContainerInset = .zero
         $0.textContainer.lineFragmentPadding = .zero
         $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.returnKeyType = .go
+        $0.delegate = self
         return $0
     } (UITextView())
     
@@ -102,6 +126,8 @@ class MainInputView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
+    let textPublisher = PassthroughSubject<String, Never>()
+    
     private func bind() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
         addGestureRecognizer(tapGesture)
@@ -110,7 +136,11 @@ class MainInputView: UIView {
         
         NotificationCenter.default.publisher(for: UITextView.textDidBeginEditingNotification, object: textView)
             .sink { [unowned self] _ in
-                mode = true
+                switch mode {
+                case .forced(let opened):
+                    if !opened { mode = .forced(isOpen: !opened) }
+                default: mode = .opened
+                }
             }
             .store(in: &cancellable)
         
@@ -122,35 +152,67 @@ class MainInputView: UIView {
             .store(in: &cancellable)
         
         NotificationCenter.default.publisher(for: UITextView.textDidEndEditingNotification, object: textView)
-            .sink { [unowned self] _ in
+            .compactMap { $0.object as? UITextView }
+//            .compactMap { $0.text }
+            .sink { [unowned self] text in
+//                textPublisher.send(text)
                 resetState()
             }
             .store(in: &cancellable)
         
         $mode
+//            .print("input view $mode")
             .sink { [unowned self] mode in
-                closeButton.isHidden = !mode
-                activeTextViewConstraint.isActive = mode
-                if mode { textView.selectAll(self) }
+                print("input mode:", mode)
+                switch mode {
+                case .still: resetState()
+                default:
+                    closeButton.isHidden = mode.closeButtonHidden
+                    activeTextViewConstraint.isActive = !mode.closeButtonHidden
+                    if mode.active { textView.selectAll(self) }
+                }
             }
             .store(in: &cancellable)
+        
     }
     
     @objc
     private func handleTapGesture() {
-        if !mode { mode.toggle() }
+        if !mode.active { mode = .opened }
     }
     
     @objc
     private func handleCloseButtonTap() {
-        if mode { mode.toggle() }
-        resetState()
-        textView.resignFirstResponder()
+        switch mode {
+        case .forced(let isOpen):
+            mode = .forced(isOpen: !isOpen)
+            resetState()
+        default:
+            if mode.active { mode = .still }
+            resetState()
+        }
+        
     }
     
     private func resetState() {
+        closeButton.isHidden = mode.closeButtonHidden
+        activeTextViewConstraint.isActive = !mode.closeButtonHidden
         textView.text = ""
         placeholderLabel.isHidden = false
+        textView.resignFirstResponder()
+    }
+    
+}
+
+extension MainInputView: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if let character = text.first, character.isNewline {
+            textPublisher.send(textView.text)
+//            resetState()
+            return false
+        }
+        return true
     }
     
 }

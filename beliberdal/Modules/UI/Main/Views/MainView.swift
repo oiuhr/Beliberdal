@@ -14,14 +14,14 @@ class MainView: UIView {
     lazy var contentView: MainContentView = .init()
     lazy var sourceInputView: MainInputView = .init()
     
-    lazy var fireButton: UIButton = {
+    lazy var fireButton: FireButton = {
         $0.setImage(.init(systemName: "arrow.clockwise.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        $0.accessibilityIdentifier = "fire"
+        $0.setState(to: .still)
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
         
         return $0
-    } (RoundedButton())
+    } (FireButton())
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,10 +61,11 @@ class MainView: UIView {
             sourceInputView.bottomAnchor.constraint(equalTo: bottomAnchor),
             sourceInputView.leadingAnchor.constraint(equalTo: leadingAnchor),
             sourceInputView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            suspendedInputViewConstraint,
+            activeInputViewConstraint
         ])
         activeInputViewConstraint.priority = .init(rawValue: 999)
         suspendedInputViewConstraint.priority = .init(rawValue: 998)
-        suspendedInputViewConstraint.isActive = true
         
         addSubview(fireButton)
         NSLayoutConstraint.activate([
@@ -81,11 +82,17 @@ class MainView: UIView {
     private func bind() {
         sourceInputView.$mode
             .dropFirst()
-            .sink { [unowned self] value in
+            .sink { [weak self] value in
                 UIView.animate(withDuration: 0.6, delay: .zero, usingSpringWithDamping: 100, initialSpringVelocity: 0.1, options: .curveEaseOut) {
-                    activeInputViewConstraint.isActive = value
-                    layoutIfNeeded()
+                    self?.activeInputViewConstraint.isActive = value.active
+                    self?.layoutIfNeeded()
                 }
+            }
+            .store(in: &cancellable)
+        
+        contentView.tryedToEnterInput
+            .sink { [weak self] _ in
+                self?.sourceInputView.textView.selectAll(self)
             }
             .store(in: &cancellable)
     }

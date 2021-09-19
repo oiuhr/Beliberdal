@@ -54,14 +54,34 @@ class MainViewController: ViewController<MainView> {
     
     private func bind() {
         viewModel.output.currentTransformerMode
-            .sink { [unowned self] value in
-                mainView.switchModeButton.setTitle(value, for: .normal)
+            .sink { [weak self] transformerName in
+                self?.mainView.switchModeButton.setTitle(transformerName, for: .normal)
+            }
+            .store(in: &cancellable)
+ 
+        viewModel.output.currentMode
+            .dropFirst()
+            .sink { [weak self] mode in
+                print(mode)
+                switch mode {
+                case .content(let initialValue, let content):
+                    self?.mainView.contentView.inputTextView.text = initialValue
+                    self?.mainView.contentView.outputTextView.text = content
+                    self?.mainView.fireButton.setState(to: .still)
+                    self?.mainView.sourceInputView.mode = .still
+                case .error(_):
+                    self?.handleError()
+                case .loading:
+                    self?.mainView.fireButton.setState(to: .loading)
+                case .empty:
+                    self?.mainView.sourceInputView.mode = .forced(isOpen: false)
+                }
             }
             .store(in: &cancellable)
         
-        viewModel.output.transformResult
-            .sink { [unowned self] _ in handleError() } receiveValue: { [unowned self] value in
-                mainView.contentView.outputTextView.text = value
+        mainView.sourceInputView.textPublisher
+            .sink { [weak self] entry in
+                self?.viewModel.input.transformAction.send(entry)
             }
             .store(in: &cancellable)
         

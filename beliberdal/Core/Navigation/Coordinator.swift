@@ -22,18 +22,15 @@ class MainCoordinator: Coordinator {
     }
     
     private let settingsService: SettingsServiceProtocol
-    private let beliberdalService: BeliberdalService
     private let favouritesStorage: FavouritesStorageProtocol
     
     init(favouritesStorage: FavouritesStorageProtocol) {
         settingsService = SettingsService(SettingsStorage())
-        beliberdalService = BeliberdalService(settingsService: settingsService)
         self.favouritesStorage = favouritesStorage
     }
     
     func start() {
         let vm = MainViewModel(settingsService: settingsService,
-                               beliberdalService: beliberdalService,
                                favouritesStorage: favouritesStorage)
         vm.openSettings = openSettings
         vm.openCats = openCats
@@ -47,9 +44,13 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func openCats() {
-        let catService = CatService(networkClient: NetworkClient(), requestBuilder: RequestBuilder())
-        let vm = CatViewModel(catService: catService)
+    func openCats(query: String) {
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        let session = URLSession(configuration: sessionConfiguration)
+        let networkClient = NetworkClient(session: session)
+        let catService = CatService(networkClient: networkClient, requestBuilder: RequestBuilder())
+        let vm = CatViewModel(catService: catService, initialPhrase: query)
         let vc = CatViewController(vm)
         navigationController.pushViewController(vc, animated: true)
     }

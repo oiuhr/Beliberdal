@@ -8,16 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		CD051BFE26F1BAA200D9ED75 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051BFD26F1BAA200D9ED75 /* UIImage.swift */; };
+		CD051C0126F1C05B00D9ED75 /* CatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */; };
+		CD051C0426F2788A00D9ED75 /* BalabobaResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = CD051C0226F274C100D9ED75 /* BalabobaResponse.json */; };
 		CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */; };
 		CD144E6726D4ABAC00C33D0D /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
 		CD144E6926D4AC8900C33D0D /* MainViewTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */; };
 		CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6A26D4AC9700C33D0D /* MainContentView.swift */; };
 		CD144E6D26D4ACA800C33D0D /* MainInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6C26D4ACA800C33D0D /* MainInputView.swift */; };
+		CD188B7826F2BFB0007AD269 /* CatViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD188B7726F2BFB0007AD269 /* CatViewModelTests.swift */; };
+		CD188B7926F2BFD7007AD269 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */; };
+		CD188B7A26F2BFE3007AD269 /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019C26F19E1300351FF4 /* CatService.swift */; };
+		CD188B7B26F2BFE6007AD269 /* CatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */; };
+		CD188B7C26F2BFE9007AD269 /* CatEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019A26F19C1100351FF4 /* CatEndPoint.swift */; };
+		CD188B7D26F2CA37007AD269 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016126EF574700351FF4 /* FavouritesViewModel.swift */; };
+		CD188B7F26F2CA5C007AD269 /* FavouritesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD188B7E26F2CA5C007AD269 /* FavouritesViewModelTests.swift */; };
+		CD188B8126F2CA8E007AD269 /* FavouritesStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD188B8026F2CA8E007AD269 /* FavouritesStorageMock.swift */; };
+		CD188B8226F2CD87007AD269 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
+		CD188B8426F2CD96007AD269 /* SettingsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD188B8326F2CD96007AD269 /* SettingsServiceMock.swift */; };
+		CD188B8526F2CDF8007AD269 /* StringTransformerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */; };
+		CD188B8726F2CE6A007AD269 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD188B8626F2CE6A007AD269 /* SettingsViewModelTests.swift */; };
+		CD188B8826F2CFDA007AD269 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
+		CD188B8926F2D0D3007AD269 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78A26CC774700EF287D /* NetworkClient.swift */; };
 		CD28EA6326DEE32A000CF91D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28EA6226DEE32A000CF91D /* SettingsView.swift */; };
 		CD28EA6526DEE334000CF91D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD28EA6426DEE334000CF91D /* SettingsViewController.swift */; };
 		CD4BCE1526E6668E00FA126A /* SmileyStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */; };
 		CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */; };
-		CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */; };
 		CD4BCE1E26E6A7B900FA126A /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
 		CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
 		CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */; };
@@ -50,8 +65,6 @@
 		CD5A018A26F1759D00351FF4 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A018026F173D400351FF4 /* APIRouter.swift */; };
 		CD5A018B26F176DF00351FF4 /* BalabobaEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A018226F173F900351FF4 /* BalabobaEndPoint.swift */; };
 		CD5A018E26F17DB500351FF4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015F26EF4AC800351FF4 /* CoreDataStack.swift */; };
-		CD5A019026F17DD700351FF4 /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A018F26F17DD700351FF4 /* MockCoreDataStack.swift */; };
-		CD5A019226F17F4600351FF4 /* FavouritesStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019126F17F4600351FF4 /* FavouritesStorageTests.swift */; };
 		CD5A019326F17F8D00351FF4 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016726EF599C00351FF4 /* FavouritesStorage.swift */; };
 		CD5A019426F17F8F00351FF4 /* FavouritesStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016A26EF994100351FF4 /* FavouritesStorageProtocol.swift */; };
 		CD5A019526F17F9100351FF4 /* TransformerResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016C26EF994C00351FF4 /* TransformerResultDTO.swift */; };
@@ -75,7 +88,6 @@
 		CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDB804BD269111FE00DB4B14 /* beliberdal.xcdatamodeld */; };
 		CDB804C12691120100DB4B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB804C02691120100DB4B14 /* Assets.xcassets */; };
 		CDB804C42691120100DB4B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB804C22691120100DB4B14 /* LaunchScreen.storyboard */; };
-		CDB804CF2691120100DB4B14 /* beliberdalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB804CE2691120100DB4B14 /* beliberdalTests.swift */; };
 		CDB804DA2691120100DB4B14 /* beliberdalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB804D92691120100DB4B14 /* beliberdalUITests.swift */; };
 		CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9DA2126CDBDCB00F55824 /* UIColor.swift */; };
 /* End PBXBuildFile section */
@@ -99,16 +111,22 @@
 
 /* Begin PBXFileReference section */
 		CD051BFD26F1BAA200D9ED75 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatServiceProtocol.swift; sourceTree = "<group>"; };
+		CD051C0226F274C100D9ED75 /* BalabobaResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BalabobaResponse.json; sourceTree = "<group>"; };
 		CD0DD6FC26EE1AE8002E9D84 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CD144E6826D4AC8900C33D0D /* MainViewTopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewTopBar.swift; sourceTree = "<group>"; };
 		CD144E6A26D4AC9700C33D0D /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		CD144E6C26D4ACA800C33D0D /* MainInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInputView.swift; sourceTree = "<group>"; };
+		CD188B7726F2BFB0007AD269 /* CatViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModelTests.swift; sourceTree = "<group>"; };
+		CD188B7E26F2CA5C007AD269 /* FavouritesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModelTests.swift; sourceTree = "<group>"; };
+		CD188B8026F2CA8E007AD269 /* FavouritesStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorageMock.swift; sourceTree = "<group>"; };
+		CD188B8326F2CD96007AD269 /* SettingsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceMock.swift; sourceTree = "<group>"; };
+		CD188B8626F2CE6A007AD269 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		CD28EA6226DEE32A000CF91D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CD28EA6426DEE334000CF91D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileyStringTransfomer.swift; sourceTree = "<group>"; };
 		CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalabobaStringTransfomer.swift; sourceTree = "<group>"; };
-		CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeliberdalService.swift; sourceTree = "<group>"; };
 		CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsServiceProtocol.swift; sourceTree = "<group>"; };
 		CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		CD4BCE2126E83AFD00FA126A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -133,8 +151,6 @@
 		CD5A018026F173D400351FF4 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		CD5A018226F173F900351FF4 /* BalabobaEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalabobaEndPoint.swift; sourceTree = "<group>"; };
 		CD5A018826F1757200351FF4 /* RequestBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderTests.swift; sourceTree = "<group>"; };
-		CD5A018F26F17DD700351FF4 /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
-		CD5A019126F17F4600351FF4 /* FavouritesStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesStorageTests.swift; sourceTree = "<group>"; };
 		CD5A019A26F19C1100351FF4 /* CatEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatEndPoint.swift; sourceTree = "<group>"; };
 		CD5A019C26F19E1300351FF4 /* CatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatService.swift; sourceTree = "<group>"; };
 		CD5A019E26F1A4AD00351FF4 /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
@@ -155,7 +171,6 @@
 		CDB804C32691120100DB4B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDB804C52691120100DB4B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB804CA2691120100DB4B14 /* beliberdalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beliberdalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDB804CE2691120100DB4B14 /* beliberdalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beliberdalTests.swift; sourceTree = "<group>"; };
 		CDB804D02691120100DB4B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB804D52691120100DB4B14 /* beliberdalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = beliberdalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB804D92691120100DB4B14 /* beliberdalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beliberdalUITests.swift; sourceTree = "<group>"; };
@@ -188,6 +203,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD051BFF26F1C03100D9ED75 /* CatService */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A019C26F19E1300351FF4 /* CatService.swift */,
+				CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */,
+			);
+			path = CatService;
+			sourceTree = "<group>";
+		};
 		CD144E6E26D4AD7000C33D0D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +229,25 @@
 				CD144E6C26D4ACA800C33D0D /* MainInputView.swift */,
 			);
 			path = SupportingViews;
+			sourceTree = "<group>";
+		};
+		CD188B7526F2BF51007AD269 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A017526F131E400351FF4 /* NetworkClientMock.swift */,
+				CD188B8026F2CA8E007AD269 /* FavouritesStorageMock.swift */,
+				CD188B8326F2CD96007AD269 /* SettingsServiceMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		CD188B7626F2BF5F007AD269 /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				CD5A017726F161B600351FF4 /* SmileyStringTransformerTests.swift */,
+				CD5A017D26F1684700351FF4 /* BalabobaStringTransformerTests.swift */,
+			);
+			path = Transformers;
 			sourceTree = "<group>";
 		};
 		CD28EA6026DEE29E000CF91D /* Main */ = {
@@ -243,14 +286,6 @@
 				CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */,
 			);
 			path = Implementations;
-			sourceTree = "<group>";
-		};
-		CD4BCE1926E66D8800FA126A /* BeliberdalService */ = {
-			isa = PBXGroup;
-			children = (
-				CD4BCE1A26E66DA900FA126A /* BeliberdalService.swift */,
-			);
-			path = BeliberdalService;
 			sourceTree = "<group>";
 		};
 		CD4BCE1C26E6A7A200FA126A /* SettingsService */ = {
@@ -459,11 +494,10 @@
 		CD7BF77E26CC703500EF287D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD051BFF26F1C03100D9ED75 /* CatService */,
 				CD5A016926EF992A00351FF4 /* FavouritesStorage */,
-				CD4BCE1926E66D8800FA126A /* BeliberdalService */,
 				CD4BCE1C26E6A7A200FA126A /* SettingsService */,
 				CD4BCE1126E6661F00FA126A /* Transfomer */,
-				CD5A019C26F19E1300351FF4 /* CatService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -531,14 +565,14 @@
 		CDB804CD2691120100DB4B14 /* beliberdalTests */ = {
 			isa = PBXGroup;
 			children = (
-				CDB804CE2691120100DB4B14 /* beliberdalTests.swift */,
 				CDB804D02691120100DB4B14 /* Info.plist */,
-				CD5A017526F131E400351FF4 /* NetworkClientMock.swift */,
-				CD5A017726F161B600351FF4 /* SmileyStringTransformerTests.swift */,
-				CD5A017D26F1684700351FF4 /* BalabobaStringTransformerTests.swift */,
+				CD188B7526F2BF51007AD269 /* Mocks */,
+				CD188B7626F2BF5F007AD269 /* Transformers */,
 				CD5A018826F1757200351FF4 /* RequestBuilderTests.swift */,
-				CD5A018F26F17DD700351FF4 /* MockCoreDataStack.swift */,
-				CD5A019126F17F4600351FF4 /* FavouritesStorageTests.swift */,
+				CD188B7726F2BFB0007AD269 /* CatViewModelTests.swift */,
+				CD051C0226F274C100D9ED75 /* BalabobaResponse.json */,
+				CD188B7E26F2CA5C007AD269 /* FavouritesViewModelTests.swift */,
+				CD188B8626F2CE6A007AD269 /* SettingsViewModelTests.swift */,
 			);
 			path = beliberdalTests;
 			sourceTree = "<group>";
@@ -672,6 +706,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD051C0426F2788A00D9ED75 /* BalabobaResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,7 +759,6 @@
 				CD5A016526EF590300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */,
 				CD5A016B26EF994100351FF4 /* FavouritesStorageProtocol.swift in Sources */,
 				CD4BCE2626E8920500FA126A /* FavouritesTableViewCell.swift in Sources */,
-				CD4BCE1B26E66DA900FA126A /* BeliberdalService.swift in Sources */,
 				CD4BCE2226E83AFD00FA126A /* SettingsViewModel.swift in Sources */,
 				CD0DD6FD26EE1AE8002E9D84 /* UserDefaults.swift in Sources */,
 				CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */,
@@ -735,6 +769,7 @@
 				CD4BCE2926E8943000FA126A /* FavouritesViewController.swift in Sources */,
 				CD5A019F26F1A4AD00351FF4 /* CatView.swift in Sources */,
 				CD5A018326F173F900351FF4 /* BalabobaEndPoint.swift in Sources */,
+				CD051C0126F1C05B00D9ED75 /* CatServiceProtocol.swift in Sources */,
 				CD144E6B26D4AC9700C33D0D /* MainContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,24 +778,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD188B8426F2CD96007AD269 /* SettingsServiceMock.swift in Sources */,
+				CD188B7A26F2BFE3007AD269 /* CatService.swift in Sources */,
 				CD5A017E26F1684700351FF4 /* BalabobaStringTransformerTests.swift in Sources */,
 				CD5A019826F1830A00351FF4 /* beliberdal.xcdatamodeld in Sources */,
 				CD5A017626F131E400351FF4 /* NetworkClientMock.swift in Sources */,
 				CD5A017826F161B600351FF4 /* SmileyStringTransformerTests.swift in Sources */,
 				CD5A019426F17F8F00351FF4 /* FavouritesStorageProtocol.swift in Sources */,
+				CD188B7F26F2CA5C007AD269 /* FavouritesViewModelTests.swift in Sources */,
 				CD5A019526F17F9100351FF4 /* TransformerResultDTO.swift in Sources */,
 				CD5A017F26F168B500351FF4 /* RequestBuilder.swift in Sources */,
+				CD188B7D26F2CA37007AD269 /* FavouritesViewModel.swift in Sources */,
 				CD5A017B26F1625B00351FF4 /* StringTransformerProtocol.swift in Sources */,
-				CD5A019226F17F4600351FF4 /* FavouritesStorageTests.swift in Sources */,
-				CDB804CF2691120100DB4B14 /* beliberdalTests.swift in Sources */,
+				CD188B8526F2CDF8007AD269 /* StringTransformerType.swift in Sources */,
 				CD5A018E26F17DB500351FF4 /* CoreDataStack.swift in Sources */,
 				CD5A019726F1802500351FF4 /* TransformerResult+CoreDataProperties.swift in Sources */,
+				CD188B8126F2CA8E007AD269 /* FavouritesStorageMock.swift in Sources */,
+				CD188B8226F2CD87007AD269 /* SettingsServiceProtocol.swift in Sources */,
+				CD188B8726F2CE6A007AD269 /* SettingsViewModelTests.swift in Sources */,
+				CD188B8826F2CFDA007AD269 /* SettingsViewModel.swift in Sources */,
+				CD188B7C26F2BFE9007AD269 /* CatEndPoint.swift in Sources */,
 				CD5A017C26F1683800351FF4 /* BalabobaStringTransfomer.swift in Sources */,
 				CD5A018A26F1759D00351FF4 /* APIRouter.swift in Sources */,
+				CD188B7826F2BFB0007AD269 /* CatViewModelTests.swift in Sources */,
+				CD188B8926F2D0D3007AD269 /* NetworkClient.swift in Sources */,
+				CD188B7926F2BFD7007AD269 /* CatViewModel.swift in Sources */,
 				CD5A018926F1757200351FF4 /* RequestBuilderTests.swift in Sources */,
 				CD5A019626F1802300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */,
 				CD5A017426F131B700351FF4 /* NetworkClientProtocol.swift in Sources */,
-				CD5A019026F17DD700351FF4 /* MockCoreDataStack.swift in Sources */,
+				CD188B7B26F2BFE6007AD269 /* CatServiceProtocol.swift in Sources */,
 				CD5A018B26F176DF00351FF4 /* BalabobaEndPoint.swift in Sources */,
 				CD5A017A26F161BD00351FF4 /* SmileyStringTransfomer.swift in Sources */,
 				CD5A019326F17F8D00351FF4 /* FavouritesStorage.swift in Sources */,

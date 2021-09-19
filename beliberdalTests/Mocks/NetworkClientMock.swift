@@ -9,12 +9,13 @@ import Foundation
 import Combine
 @testable import beliberdal
 
-struct NetworkClientMock: NetworkClientProtocol {
+class NetworkClientMock: NetworkClientProtocol {
     
-    var result: Result<Data, Error>
+    var result: Result<Data, Error>?
   
     func perform(_ request: URLRequest) -> AnyPublisher<Data, Error> {
-        result.publisher
+        guard let result = self.result else { fatalError("networkClientMock should have result to return.") }
+        return result.publisher
             .eraseToAnyPublisher()
     }
 

@@ -18,7 +18,7 @@ struct MockApiRoute: APIRouterProtocol {
 
 class RequestBuilderTests: XCTestCase {
 
-    func testThatRequestBuilderReturnsCorrectValue() {
+    func testThatRequestBuilderReturnsCorrectValue() throws {
         // arrange
         let sut = RequestBuilder()
         let route = MockApiRoute()
@@ -30,6 +30,19 @@ class RequestBuilderTests: XCTestCase {
         XCTAssertNotNil(request)
         XCTAssertEqual(request?.httpBody, route.body)
         XCTAssertEqual(request?.httpMethod, route.httpMethod.rawValue)
+    }
+    
+    func testThatRequestBuilderReturnsNilWhileTryingToCreateRequestWithEmptyUrlPath() throws {
+        // arrange
+        let sut = RequestBuilder()
+        var route = MockApiRoute()
+        route.mainPath = ""
+        
+        // act
+        let request = sut.request(for: route)
+        
+        // assert
+        XCTAssertNil(request)
     }
 
 }

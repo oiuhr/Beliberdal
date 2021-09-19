@@ -16,13 +16,20 @@ struct MainViewModelInput {
 }
 
 struct MainViewModelOutput {
-    let transformResult: AnyPublisher<String, Error>
     let currentTransformerMode: AnyPublisher<String, Never>
+    let currentMode: AnyPublisher<MainModuleMode, Never>
 }
 
 protocol MainViewModelProtocol {
     var input: MainViewModelInput { get }
     var output: MainViewModelOutput { get }
+}
+
+enum MainModuleMode {
+    case empty
+    case loading
+    case content(initialValue: String, content: String)
+    case error(error: Error)
 }
 
 class MainViewModel: MainViewModelProtocol {
@@ -32,7 +39,7 @@ class MainViewModel: MainViewModelProtocol {
     
     /// navigation
     var openSettings: Action?
-    var openCats: Action?
+    var openCats: ((String) -> Void)?
     
     /// input
     private let transformAction = PassthroughSubject<String, Never>()
@@ -41,45 +48,44 @@ class MainViewModel: MainViewModelProtocol {
     private let openCatsAction = PassthroughSubject<Void, Never>()
     
     /// output
-    private let result = CurrentValueSubject<String, Error>("")
     private let transformerName = CurrentValueSubject<String, Never>("")
+    private let mode = CurrentValueSubject<MainModuleMode, Never>(.empty)
     
     /// local
-    private let transformer: BeliberdalService
+    private let transformer: CurrentValueSubject<StringTransformerProtocol, Never> = .init(SmileyStringTransformer(for: .happy))
     private let settingsService: SettingsServiceProtocol
     private let favouritesStorage: FavouritesStorageProtocol
     private var cancellable = Set<AnyCancellable>()
     
     init(settingsService: SettingsServiceProtocol,
-         beliberdalService: BeliberdalService,
          favouritesStorage: FavouritesStorageProtocol) {
         
         self.settingsService = settingsService
-        self.transformer = beliberdalService
         self.favouritesStorage = favouritesStorage
-        
+    
         input = .init(transformAction: transformAction,
                       needsModeChange: needsModeChange,
                       addToFavouritesAction: addToFavouritesAction,
                       openCatsAction: openCatsAction)
-        output = .init(transformResult: result.eraseToAnyPublisher(),
-                       currentTransformerMode: transformerName.eraseToAnyPublisher())
+        output = .init(
+            currentTransformerMode: transformerName.eraseToAnyPublisher(),
+            currentMode: mode.eraseToAnyPublisher())
         
+        bind()
+    }
+    
+    private func bind() {
         transformAction
-            .setFailureType(to: Error.self)
-            .map { [unowned self] string in
-                transformer.transform(string)
-            }
-            .switchToLatest()
-            .receive(on: DispatchQueue.main)
-            .sink { [unowned self] completion in
-                switch completion {
-                case .failure(let error): result.send(completion: .failure(error))
-                default: print(completion)
+            .filter { $0.replacingOccurrences(of: " ", with: "") != "" }
+            .filter { [weak self] _ in
+                if case .loading = self?.mode.value {
+                    return false
                 }
-            } receiveValue: { [unowned self] transformed in
-                print(transformed)
-                result.send(transformed)
+                return true
+            }
+            .sink { [weak self] string in
+                self?.mode.send(.loading)
+                self?.perform(string)
             }
             .store(in: &cancellable)
         
@@ -89,27 +95,58 @@ class MainViewModel: MainViewModelProtocol {
         
         addToFavouritesAction
             .compactMap { [weak self] _ -> TransformerResultDTO? in
-                guard let result = self?.result.value,
+                guard case .content(_, let result) = self?.mode.value,
                       !result.isEmpty,
                       let transformerName = self?.transformerName.value else { return nil }
-                return TransformerResultDTO(id: UUID(),
-                                            transformerName: transformerName,
-                                            content: result)
+                return TransformerResultDTO(id: UUID(), transformerName: transformerName, content: result)
             }
             .sink { [weak self] item in
                 self?.favouritesStorage.save(item)
             }
             .store(in: &cancellable)
+//
+//        mode
+//            .compactMap { mode -> String? in
+//                if case .content(_, let result) = mode {
+//                    return result
+//                }
+//                else { return nil }
+//            }
+//            .sink { [weak self] value in
+//                if value.isEmpty { self?.mode.send(.empty) }
+//            }
+//            .store(in: &cancellable)
         
         openCatsAction
-            .sink { [weak self] in self?.openCats?() }
+            .sink { [weak self] in
+                if case .content(let initialValue, _) = self?.mode.value {
+                    self?.openCats?(initialValue)
+                }
+            }
             .store(in: &cancellable)
         
         settingsService.strategy
             .sink { [weak self] value in
                 self?.transformerName.value = "\(value.name) – \(value.modeName)"
+                self?.transformer.value = value.entity
             }
             .store(in: &cancellable)
+    }
+    
+    private func perform(_ query: String) {
+        transformer.value.transform(query)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.mode.send(.error(error: error))
+                case .finished: break
+                }
+            } receiveValue: { [weak self] transformed in
+                self?.mode.send(.content(initialValue: query, content: transformed))
+            }
+            .store(in: &cancellable)
+        
     }
     
 }
