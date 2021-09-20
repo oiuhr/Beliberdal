@@ -16,13 +16,13 @@ pod install
 <img src="forReadme/main-empty.gif" width="40%"/><a> </a><img src="forReadme/main-network.gif" width="40%"/>
 2. Экран с настройками
     – представляет собой список доступных опций трансформеров. 
-<img src="forReadme/settings.gif" width="40%"/>
+<a> </a><img src="forReadme/settings.gif" width="40%"/>
 3. Экран с котиками
     – просто котики :) Базовая реализация пункта с загрузкой медиа из сети из списка требований по проекту.
-<img src="forReadme/cats.gif" width="40%"/>
+<a> </a><img src="forReadme/cats.gif" width="40%"/>
 4. Экран с избранными
     – табличка с результатами, добавленными в избранное. Поддерживает swipe to delete, работает с кордатой через простенькую обертку на DTO.
-<img src="forReadme/favourites.gif" width="40%"/>
+<a> </a><img src="forReadme/favourites.gif" width="40%"/>
 ### Известные проблемы
 1. Главный экран
     1.1 На нажатие кнопок с пустым полем ввода не будет никакой реакции
