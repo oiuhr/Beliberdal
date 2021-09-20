@@ -58,7 +58,7 @@ final class FavouritesStorage: FavouritesStorageProtocol {
         let context = container.viewContext
         
         context.performAndWait {
-            let request = TransformerResult.fetchRequest()
+            let request = NSFetchRequest<TransformerResult>(entityName: "TransformerResult")
             let result = try? request.execute()
             guard let safeResult = result else { return }
             let items = safeResult.compactMap { item -> TransformerResultDTO? in

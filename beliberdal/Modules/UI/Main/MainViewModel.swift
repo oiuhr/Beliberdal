@@ -10,7 +10,7 @@ import Combine
 
 struct MainViewModelInput {
     let transformAction: PassthroughSubject<String, Never>
-    let needsModeChange: PassthroughSubject<Void, Never>
+    let openSettingsAction: PassthroughSubject<Void, Never>
     let addToFavouritesAction: PassthroughSubject<Void, Never>
     let openCatsAction: PassthroughSubject<Void, Never>
 }
@@ -31,6 +31,8 @@ enum MainModuleMode {
     case content(initialValue: String, content: String)
     case error(error: Error)
 }
+
+typealias Action = (() -> Void)
 
 class MainViewModel: MainViewModelProtocol {
     
@@ -64,7 +66,7 @@ class MainViewModel: MainViewModelProtocol {
         self.favouritesStorage = favouritesStorage
     
         input = .init(transformAction: transformAction,
-                      needsModeChange: needsModeChange,
+                      openSettingsAction: needsModeChange,
                       addToFavouritesAction: addToFavouritesAction,
                       openCatsAction: openCatsAction)
         output = .init(
@@ -104,24 +106,12 @@ class MainViewModel: MainViewModelProtocol {
                 self?.favouritesStorage.save(item)
             }
             .store(in: &cancellable)
-//
-//        mode
-//            .compactMap { mode -> String? in
-//                if case .content(_, let result) = mode {
-//                    return result
-//                }
-//                else { return nil }
-//            }
-//            .sink { [weak self] value in
-//                if value.isEmpty { self?.mode.send(.empty) }
-//            }
-//            .store(in: &cancellable)
-        
+
         openCatsAction
             .sink { [weak self] in
                 if case .content(let initialValue, _) = self?.mode.value {
                     self?.openCats?(initialValue)
-                }
+                } else { self?.openCats?("") }
             }
             .store(in: &cancellable)
         

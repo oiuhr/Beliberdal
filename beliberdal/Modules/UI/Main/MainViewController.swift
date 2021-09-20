@@ -58,7 +58,7 @@ class MainViewController: ViewController<MainView> {
                 self?.mainView.switchModeButton.setTitle(transformerName, for: .normal)
             }
             .store(in: &cancellable)
- 
+        
         viewModel.output.currentMode
             .dropFirst()
             .sink { [weak self] mode in
@@ -68,13 +68,14 @@ class MainViewController: ViewController<MainView> {
                     self?.mainView.contentView.inputTextView.text = initialValue
                     self?.mainView.contentView.outputTextView.text = content
                     self?.mainView.fireButton.setState(to: .still)
-                    self?.mainView.sourceInputView.mode = .still
-                case .error(_):
-                    self?.handleError()
+                    self?.mainView.sourceInputView.mode.value = .still
+                case .error(let error):
+                    self?.handleError(error)
+                    self?.mainView.fireButton.setState(to: .still)
                 case .loading:
                     self?.mainView.fireButton.setState(to: .loading)
                 case .empty:
-                    self?.mainView.sourceInputView.mode = .forced(isOpen: false)
+                    self?.mainView.sourceInputView.mode.value = .forced(isOpen: false)
                 }
             }
             .store(in: &cancellable)
@@ -85,6 +86,14 @@ class MainViewController: ViewController<MainView> {
             }
             .store(in: &cancellable)
         
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification, object: nil)
+            .sink { [weak self] notification in self?.keyboardWillShow(notification) }
+            .store(in: &cancellable)
+        
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification, object: nil)
+            .sink { [weak self] notification in self?.keyboardWillHide(notification) }
+            .store(in: &cancellable)
+        
         mainView.switchModeButton.addTarget(self, action: #selector(mode), for: .touchUpInside)
         mainView.fireButton.addTarget(self, action: #selector(fire), for: .touchUpInside)
         mainView.contentView.favouriteButton.addTarget(self, action: #selector(save), for: .touchUpInside)
@@ -93,13 +102,19 @@ class MainViewController: ViewController<MainView> {
     
     @objc
     private func fire() {
-        guard let text = mainView.contentView.inputTextView.text else { return }
-        viewModel.input.transformAction.send(text)
+        switch mainView.sourceInputView.mode.value {
+        case .opened, .forced:
+            guard let text = mainView.sourceInputView.textView.text else { return }
+            viewModel.input.transformAction.send(text)
+        default:
+            guard let text = mainView.contentView.inputTextView.text else { return }
+            viewModel.input.transformAction.send(text)
+        }
     }
     
     @objc
     private func mode() {
-        viewModel.input.needsModeChange.send()
+        viewModel.input.openSettingsAction.send()
     }
     
     @objc
@@ -112,7 +127,34 @@ class MainViewController: ViewController<MainView> {
         viewModel.input.addToFavouritesAction.send()
     }
     
-    private func handleError() {
+    private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
+        else { return }
+        
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.mainView.keyBoardBinder(keyboardFrame.height)
+            self?.mainView.layoutIfNeeded()
+        }
+    }
+    
+    private func keyboardWillHide(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
+        else { return }
+        
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.mainView.keyBoardBinder(0)
+            self?.mainView.layoutIfNeeded()
+        }
+    }
+    
+    enum InputError: Error {
+        case empty
+    }
+    
+    private func handleError(_ error: Error) {
         let alert = UIAlertController(title: "Error occured!", message: "Were so sorry.", preferredStyle: .alert)
         alert.addAction(.init(title: "uwu", style: .cancel, handler: nil))
         present(alert, animated: true)

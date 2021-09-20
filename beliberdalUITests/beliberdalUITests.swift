@@ -6,17 +6,26 @@
 //
 
 import XCTest
+import SnapshotTesting
+@testable import beliberdal
 
 class beliberdalUITests: XCTestCase {
 
-    func testFireButtonTapIsHandled() throws {
-        let app = XCUIApplication()
-        app.launch()
-        let fireButton = app.buttons["fire"]
-        
-        fireButton.tap()
-
-        XCTAssert(app.textViews["output"].value as! String == "Пиво :)")
+    func testSnapshotExample() {
+        let catService = CatService(networkClient: NetworkClient(), requestBuilder: RequestBuilder())
+        let vm = CatViewModel(catService: catService)
+        let vc = CatViewController(vm)
+        assertSnapshot(matching: vc, as: .image(on: .iPhoneSe))
     }
 
+    func testSettingsModuleIsReachable() throws {
+        let app = XCUIApplication()
+        app.launch()
+        let mainPage = MainPage(app: app)
+        mainPage.tapOnSettingsButton()
+            .checkTableViewExists {
+                XCTAssertTrue($0)
+            }
+    }
+    
 }

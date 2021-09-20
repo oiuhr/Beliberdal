@@ -13,4 +13,12 @@ extension UIImage {
         UIImage(named: "tapMe")
     }
     
+    static var chevron: UIImage? {
+        UIImage(named: "chevron.forward")
+    }
+    
+    static var paw: UIImage? {
+        UIImage(named: "paw")
+    }
+    
 }

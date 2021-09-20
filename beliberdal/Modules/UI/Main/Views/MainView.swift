@@ -10,7 +10,10 @@ import Combine
 
 class MainView: UIView {
     
-    lazy var switchModeButton: UIButton = MainViewTopBar()
+    lazy var switchModeButton: UIButton = {
+        $0.accessibilityIdentifier = "settingsButton"
+        return $0
+    } (MainViewTopBar())
     lazy var contentView: MainContentView = .init()
     lazy var sourceInputView: MainInputView = .init()
     
@@ -36,6 +39,7 @@ class MainView: UIView {
     
     lazy var suspendedInputViewConstraint = sourceInputView.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8)
     lazy var activeInputViewConstraint = sourceInputView.topAnchor.constraint(equalTo: contentView.topAnchor)
+    lazy var fireButtonBottomConstraint = fireButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -21)
     
     private func fill() {
         backgroundColor = .backgroundLightPink
@@ -72,7 +76,7 @@ class MainView: UIView {
             fireButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             fireButton.widthAnchor.constraint(equalToConstant: 49),
             fireButton.heightAnchor.constraint(equalToConstant: 49),
-            fireButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -21)
+            fireButtonBottomConstraint
         ])
         
     }
@@ -80,7 +84,7 @@ class MainView: UIView {
     private var cancellable = Set<AnyCancellable>()
     
     private func bind() {
-        sourceInputView.$mode
+        sourceInputView.mode
             .dropFirst()
             .sink { [weak self] value in
                 UIView.animate(withDuration: 0.6, delay: .zero, usingSpringWithDamping: 100, initialSpringVelocity: 0.1, options: .curveEaseOut) {
@@ -95,6 +99,11 @@ class MainView: UIView {
                 self?.sourceInputView.textView.selectAll(self)
             }
             .store(in: &cancellable)
+    }
+    
+    func keyBoardBinder(_ height: CGFloat) {
+        fireButtonBottomConstraint.constant = height == 0 ? -21 : -height
+        sourceInputView.bottomTextViewConstraint.constant = height == 0 ? -10 : -height
     }
     
 }

@@ -26,7 +26,6 @@ final class BalabobaStringTransformer: StringTransformerProtocol {
     func transform(_ string: String) -> AnyPublisher<String, Error> {
         let route = BalabobaEndPoint.transform(mode: currentMode.rawValue, query: string)
         guard let request = requestBuilder.request(for: route) else {
-            print("req creating error")
             return Fail<String, Error>.init(error: StringTransformerError.undefined)
                 .eraseToAnyPublisher()
         }

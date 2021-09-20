@@ -13,6 +13,7 @@ class SettingsView: UIView {
     static var headerReuseIdentifier: String { "SettingsViewTableViewHeader" }
     
     lazy var tableView: UITableView = {
+        $0.accessibilityIdentifier = "settingsTableView"
         $0.register(UITableViewCell.self, forCellReuseIdentifier: SettingsView.cellReuseIdentifier)
         $0.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: SettingsView.headerReuseIdentifier)
         $0.backgroundColor = .clear

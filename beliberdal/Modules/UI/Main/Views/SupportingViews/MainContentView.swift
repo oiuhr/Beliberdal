@@ -84,7 +84,7 @@ class MainContentView: UIView {
     } (UIButton())
     
     lazy var catsButton: UIButton = {
-        $0.setImage(.init(systemName: "leaf.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        $0.setImage(.paw?.withRenderingMode(.alwaysTemplate), for: .normal)
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.imageView?.translatesAutoresizingMaskIntoConstraints = false

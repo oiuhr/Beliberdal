@@ -23,7 +23,7 @@ class MainViewTopBar: UIButton {
         titleLabel?.font = .systemFont(ofSize: 11, weight: .medium)
         setTitleColor(.fontBlack, for: .normal)
         
-        setImage(UIImage(systemName: "chevron.right")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        setImage(.chevron?.withRenderingMode(.alwaysTemplate), for: .normal)
         imageView?.tintColor = .accentPink
         
         semanticContentAttribute = .forceRightToLeft

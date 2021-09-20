@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D448CD81C359DF418D36547 /* Pods_beliberdalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B63543960AC7E0FDFC62FA /* Pods_beliberdalTests.framework */; };
+		C0577B62FC0534EBAC5A4CA6 /* Pods_beliberdal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 708765BE673621B9C6AB2579 /* Pods_beliberdal.framework */; };
 		CD051BFE26F1BAA200D9ED75 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051BFD26F1BAA200D9ED75 /* UIImage.swift */; };
 		CD051C0126F1C05B00D9ED75 /* CatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */; };
 		CD051C0426F2788A00D9ED75 /* BalabobaResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = CD051C0226F274C100D9ED75 /* BalabobaResponse.json */; };
@@ -78,6 +80,39 @@
 		CD5A01A326F1A84100351FF4 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A226F1A84100351FF4 /* CatViewController.swift */; };
 		CD5A01A526F1AE6F00351FF4 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
+		CD775A0426F8BEE500F0F978 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD775A0326F8BEE500F0F978 /* Page.swift */; };
+		CD775A0926F8E43700F0F978 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
+		CD775A0A26F8E43900F0F978 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
+		CD775A0C26F8E43D00F0F978 /* StringTransformerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */; };
+		CD775A0D26F8E44200F0F978 /* FavouritesStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016A26EF994100351FF4 /* FavouritesStorageProtocol.swift */; };
+		CD775A0E26F8E44400F0F978 /* FavouritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016726EF599C00351FF4 /* FavouritesStorage.swift */; };
+		CD775A0F26F8E44600F0F978 /* TransformerResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016C26EF994C00351FF4 /* TransformerResultDTO.swift */; };
+		CD775A1026F8E48200F0F978 /* BalabobaStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1626E666C000FA126A /* BalabobaStringTransfomer.swift */; };
+		CD775A1126F8E48B00F0F978 /* NetworkClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A017226F1319900351FF4 /* NetworkClientProtocol.swift */; };
+		CD775A1226F8E49900F0F978 /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78C26CC7A8C00EF287D /* RequestBuilder.swift */; };
+		CD775A1326F8E4A100F0F978 /* BalabobaEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A018226F173F900351FF4 /* BalabobaEndPoint.swift */; };
+		CD775A1426F8E4AF00F0F978 /* SmileyStringTransfomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1426E6668E00FA126A /* SmileyStringTransfomer.swift */; };
+		CD775A1526F8E4C500F0F978 /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
+		CD775A1726F8E4EF00F0F978 /* SettingsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD775A1626F8E4EF00F0F978 /* SettingsStorageProtocol.swift */; };
+		CD775A1826F8E4FA00F0F978 /* SettingsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD775A1626F8E4EF00F0F978 /* SettingsStorageProtocol.swift */; };
+		CD775A1926F8E51E00F0F978 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78A26CC774700EF287D /* NetworkClient.swift */; };
+		CD775A1A26F8E53700F0F978 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A015F26EF4AC800351FF4 /* CoreDataStack.swift */; };
+		CD775A1B26F8E56400F0F978 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A018026F173D400351FF4 /* APIRouter.swift */; };
+		CD775A1C26F8E59300F0F978 /* TransformerResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016326EF590300351FF4 /* TransformerResult+CoreDataClass.swift */; };
+		CD775A1D26F8E5B400F0F978 /* TransformerResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A016426EF590300351FF4 /* TransformerResult+CoreDataProperties.swift */; };
+		CD775A1E26F8E6E400F0F978 /* CatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019C26F19E1300351FF4 /* CatService.swift */; };
+		CD775A1F26F8E6E600F0F978 /* CatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */; };
+		CD775A2026F8E71600F0F978 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */; };
+		CD775A2126F8E71800F0F978 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A226F1A84100351FF4 /* CatViewController.swift */; };
+		CD775A2226F8E71A00F0F978 /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019E26F1A4AD00351FF4 /* CatView.swift */; };
+		CD775A2326F8E75800F0F978 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
+		CD775A2426F8E77E00F0F978 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD051BFD26F1BAA200D9ED75 /* UIImage.swift */; };
+		CD775A2526F8E78300F0F978 /* FireButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A026F1A53A00351FF4 /* FireButton.swift */; };
+		CD775A2626F8E79500F0F978 /* CatEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A019A26F19C1100351FF4 /* CatEndPoint.swift */; };
+		CD775A2726F8E7AD00F0F978 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD144E6626D4ABAC00C33D0D /* RoundedButton.swift */; };
+		CD775A2826F8E7BB00F0F978 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9DA2126CDBDCB00F55824 /* UIColor.swift */; };
+		CD775A2A26F8F42400F0F978 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD775A2926F8F42400F0F978 /* MainViewModelTests.swift */; };
+		CD775A2B26F8F42700F0F978 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
 		CD7BF78026CC705D00EF287D /* StringTransformerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */; };
 		CD7BF78526CC744700EF287D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78426CC744700EF287D /* ViewController.swift */; };
 		CD7BF78726CC746E00EF287D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78626CC746E00EF287D /* MainView.swift */; };
@@ -90,6 +125,7 @@
 		CDB804C42691120100DB4B14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDB804C22691120100DB4B14 /* LaunchScreen.storyboard */; };
 		CDB804DA2691120100DB4B14 /* beliberdalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB804D92691120100DB4B14 /* beliberdalUITests.swift */; };
 		CDF9DA2226CDBDCB00F55824 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF9DA2126CDBDCB00F55824 /* UIColor.swift */; };
+		EA2957CFC14EC1B0D63C7B8A /* Pods_beliberdal_beliberdalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E5C0E6FA0E6C6B36E1B8F9 /* Pods_beliberdal_beliberdalUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +146,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38B63543960AC7E0FDFC62FA /* Pods_beliberdalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beliberdalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BA71E9613B50533E08AEE67 /* Pods-beliberdalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdalTests.release.xcconfig"; path = "Target Support Files/Pods-beliberdalTests/Pods-beliberdalTests.release.xcconfig"; sourceTree = "<group>"; };
+		6F2A6DBE4AAF9537AB472406 /* Pods-beliberdal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdal.debug.xcconfig"; path = "Target Support Files/Pods-beliberdal/Pods-beliberdal.debug.xcconfig"; sourceTree = "<group>"; };
+		708765BE673621B9C6AB2579 /* Pods_beliberdal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beliberdal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97683854B82394B02D1B8280 /* Pods-beliberdal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdal.release.xcconfig"; path = "Target Support Files/Pods-beliberdal/Pods-beliberdal.release.xcconfig"; sourceTree = "<group>"; };
+		C264705990EBACF44F6E9950 /* Pods-beliberdalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdalTests.debug.xcconfig"; path = "Target Support Files/Pods-beliberdalTests/Pods-beliberdalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C8E5C0E6FA0E6C6B36E1B8F9 /* Pods_beliberdal_beliberdalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_beliberdal_beliberdalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD051BFD26F1BAA200D9ED75 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		CD051C0026F1C05B00D9ED75 /* CatServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatServiceProtocol.swift; sourceTree = "<group>"; };
 		CD051C0226F274C100D9ED75 /* BalabobaResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BalabobaResponse.json; sourceTree = "<group>"; };
@@ -158,6 +201,9 @@
 		CD5A01A226F1A84100351FF4 /* CatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewController.swift; sourceTree = "<group>"; };
 		CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		CD775A0326F8BEE500F0F978 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Page.swift; path = ../../../../../Page.swift; sourceTree = "<group>"; };
+		CD775A1626F8E4EF00F0F978 /* SettingsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorageProtocol.swift; sourceTree = "<group>"; };
+		CD775A2926F8F42400F0F978 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
 		CD7BF78426CC744700EF287D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CD7BF78626CC746E00EF287D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -176,6 +222,8 @@
 		CDB804D92691120100DB4B14 /* beliberdalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = beliberdalUITests.swift; sourceTree = "<group>"; };
 		CDB804DB2691120100DB4B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDF9DA2126CDBDCB00F55824 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		DA43D2B2B405D5138A872937 /* Pods-beliberdal-beliberdalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdal-beliberdalUITests.release.xcconfig"; path = "Target Support Files/Pods-beliberdal-beliberdalUITests/Pods-beliberdal-beliberdalUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E972894F0BE55B86F3DFBB49 /* Pods-beliberdal-beliberdalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beliberdal-beliberdalUITests.debug.xcconfig"; path = "Target Support Files/Pods-beliberdal-beliberdalUITests/Pods-beliberdal-beliberdalUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0577B62FC0534EBAC5A4CA6 /* Pods_beliberdal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +239,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D448CD81C359DF418D36547 /* Pods_beliberdalTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,12 +247,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2957CFC14EC1B0D63C7B8A /* Pods_beliberdal_beliberdalUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		679C1F85408235E37870AA97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				708765BE673621B9C6AB2579 /* Pods_beliberdal.framework */,
+				C8E5C0E6FA0E6C6B36E1B8F9 /* Pods_beliberdal_beliberdalUITests.framework */,
+				38B63543960AC7E0FDFC62FA /* Pods_beliberdalTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7972B2DCA3A1F9C897099CC4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F2A6DBE4AAF9537AB472406 /* Pods-beliberdal.debug.xcconfig */,
+				97683854B82394B02D1B8280 /* Pods-beliberdal.release.xcconfig */,
+				E972894F0BE55B86F3DFBB49 /* Pods-beliberdal-beliberdalUITests.debug.xcconfig */,
+				DA43D2B2B405D5138A872937 /* Pods-beliberdal-beliberdalUITests.release.xcconfig */,
+				C264705990EBACF44F6E9950 /* Pods-beliberdalTests.debug.xcconfig */,
+				6BA71E9613B50533E08AEE67 /* Pods-beliberdalTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CD051BFF26F1C03100D9ED75 /* CatService */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +369,7 @@
 				CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */,
 				CD5A015226EE834F00351FF4 /* SettingsStorage.swift */,
 				CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */,
+				CD775A1626F8E4EF00F0F978 /* SettingsStorageProtocol.swift */,
 			);
 			path = SettingsService;
 			sourceTree = "<group>";
@@ -537,6 +612,8 @@
 				CDB804CD2691120100DB4B14 /* beliberdalTests */,
 				CDB804D82691120100DB4B14 /* beliberdalUITests */,
 				CDB804B2269111FE00DB4B14 /* Products */,
+				7972B2DCA3A1F9C897099CC4 /* Pods */,
+				679C1F85408235E37870AA97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -573,6 +650,7 @@
 				CD051C0226F274C100D9ED75 /* BalabobaResponse.json */,
 				CD188B7E26F2CA5C007AD269 /* FavouritesViewModelTests.swift */,
 				CD188B8626F2CE6A007AD269 /* SettingsViewModelTests.swift */,
+				CD775A2926F8F42400F0F978 /* MainViewModelTests.swift */,
 			);
 			path = beliberdalTests;
 			sourceTree = "<group>";
@@ -582,6 +660,7 @@
 			children = (
 				CDB804D92691120100DB4B14 /* beliberdalUITests.swift */,
 				CDB804DB2691120100DB4B14 /* Info.plist */,
+				CD775A0326F8BEE500F0F978 /* Page.swift */,
 			);
 			path = beliberdalUITests;
 			sourceTree = "<group>";
@@ -602,6 +681,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDB804DE2691120100DB4B14 /* Build configuration list for PBXNativeTarget "beliberdal" */;
 			buildPhases = (
+				B17D2C14ABA6A8A7CE7F2F09 /* [CP] Check Pods Manifest.lock */,
 				CDB804AD269111FE00DB4B14 /* Sources */,
 				CDB804AE269111FE00DB4B14 /* Frameworks */,
 				CDB804AF269111FE00DB4B14 /* Resources */,
@@ -611,6 +691,8 @@
 			dependencies = (
 			);
 			name = beliberdal;
+			packageProductDependencies = (
+			);
 			productName = beliberdal;
 			productReference = CDB804B1269111FE00DB4B14 /* beliberdal.app */;
 			productType = "com.apple.product-type.application";
@@ -619,6 +701,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDB804E12691120100DB4B14 /* Build configuration list for PBXNativeTarget "beliberdalTests" */;
 			buildPhases = (
+				F4831D362882AB8EF6FC0DC5 /* [CP] Check Pods Manifest.lock */,
 				CDB804C62691120100DB4B14 /* Sources */,
 				CDB804C72691120100DB4B14 /* Frameworks */,
 				CDB804C82691120100DB4B14 /* Resources */,
@@ -637,9 +720,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDB804E42691120100DB4B14 /* Build configuration list for PBXNativeTarget "beliberdalUITests" */;
 			buildPhases = (
+				378E424E0E86CA5633CC67A8 /* [CP] Check Pods Manifest.lock */,
 				CDB804D12691120100DB4B14 /* Sources */,
 				CDB804D22691120100DB4B14 /* Frameworks */,
 				CDB804D32691120100DB4B14 /* Resources */,
+				C721067CC4513E22F470E29B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -681,6 +766,8 @@
 				Base,
 			);
 			mainGroup = CDB804A8269111FE00DB4B14;
+			packageReferences = (
+			);
 			productRefGroup = CDB804B2269111FE00DB4B14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -719,6 +806,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		378E424E0E86CA5633CC67A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beliberdal-beliberdalUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B17D2C14ABA6A8A7CE7F2F09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beliberdal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C721067CC4513E22F470E29B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beliberdal-beliberdalUITests/Pods-beliberdal-beliberdalUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-beliberdal-beliberdalUITests/Pods-beliberdal-beliberdalUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-beliberdal-beliberdalUITests/Pods-beliberdal-beliberdalUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4831D362882AB8EF6FC0DC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-beliberdalTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CDB804AD269111FE00DB4B14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -756,6 +929,7 @@
 				CD4BCE1726E666C000FA126A /* BalabobaStringTransfomer.swift in Sources */,
 				CD4BCE2026E6A7CC00FA126A /* SettingsService.swift in Sources */,
 				CD5A016F26EF99CC00351FF4 /* PlaceholderView.swift in Sources */,
+				CD775A1726F8E4EF00F0F978 /* SettingsStorageProtocol.swift in Sources */,
 				CD5A016526EF590300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */,
 				CD5A016B26EF994100351FF4 /* FavouritesStorageProtocol.swift in Sources */,
 				CD4BCE2626E8920500FA126A /* FavouritesTableViewCell.swift in Sources */,
@@ -803,8 +977,10 @@
 				CD188B7826F2BFB0007AD269 /* CatViewModelTests.swift in Sources */,
 				CD188B8926F2D0D3007AD269 /* NetworkClient.swift in Sources */,
 				CD188B7926F2BFD7007AD269 /* CatViewModel.swift in Sources */,
+				CD775A2B26F8F42700F0F978 /* MainViewModel.swift in Sources */,
 				CD5A018926F1757200351FF4 /* RequestBuilderTests.swift in Sources */,
 				CD5A019626F1802300351FF4 /* TransformerResult+CoreDataClass.swift in Sources */,
+				CD775A2A26F8F42400F0F978 /* MainViewModelTests.swift in Sources */,
 				CD5A017426F131B700351FF4 /* NetworkClientProtocol.swift in Sources */,
 				CD188B7B26F2BFE6007AD269 /* CatServiceProtocol.swift in Sources */,
 				CD5A018B26F176DF00351FF4 /* BalabobaEndPoint.swift in Sources */,
@@ -817,7 +993,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD775A1E26F8E6E400F0F978 /* CatService.swift in Sources */,
+				CD775A2726F8E7AD00F0F978 /* RoundedButton.swift in Sources */,
+				CD775A0A26F8E43900F0F978 /* SettingsServiceProtocol.swift in Sources */,
+				CD775A1B26F8E56400F0F978 /* APIRouter.swift in Sources */,
+				CD775A1026F8E48200F0F978 /* BalabobaStringTransfomer.swift in Sources */,
+				CD775A0926F8E43700F0F978 /* SettingsService.swift in Sources */,
+				CD775A1226F8E49900F0F978 /* RequestBuilder.swift in Sources */,
+				CD775A2426F8E77E00F0F978 /* UIImage.swift in Sources */,
+				CD775A0426F8BEE500F0F978 /* Page.swift in Sources */,
+				CD775A0F26F8E44600F0F978 /* TransformerResultDTO.swift in Sources */,
+				CD775A2326F8E75800F0F978 /* ViewController.swift in Sources */,
+				CD775A0D26F8E44200F0F978 /* FavouritesStorageProtocol.swift in Sources */,
+				CD775A1926F8E51E00F0F978 /* NetworkClient.swift in Sources */,
+				CD775A0C26F8E43D00F0F978 /* StringTransformerType.swift in Sources */,
+				CD775A2526F8E78300F0F978 /* FireButton.swift in Sources */,
+				CD775A1D26F8E5B400F0F978 /* TransformerResult+CoreDataProperties.swift in Sources */,
+				CD775A1826F8E4FA00F0F978 /* SettingsStorageProtocol.swift in Sources */,
+				CD775A1126F8E48B00F0F978 /* NetworkClientProtocol.swift in Sources */,
+				CD775A1426F8E4AF00F0F978 /* SmileyStringTransfomer.swift in Sources */,
+				CD775A1C26F8E59300F0F978 /* TransformerResult+CoreDataClass.swift in Sources */,
+				CD775A2626F8E79500F0F978 /* CatEndPoint.swift in Sources */,
+				CD775A2826F8E7BB00F0F978 /* UIColor.swift in Sources */,
+				CD775A1A26F8E53700F0F978 /* CoreDataStack.swift in Sources */,
+				CD775A2126F8E71800F0F978 /* CatViewController.swift in Sources */,
+				CD775A1526F8E4C500F0F978 /* StringTransformerProtocol.swift in Sources */,
+				CD775A2226F8E71A00F0F978 /* CatView.swift in Sources */,
+				CD775A2026F8E71600F0F978 /* CatViewModel.swift in Sources */,
+				CD775A1F26F8E6E600F0F978 /* CatServiceProtocol.swift in Sources */,
 				CDB804DA2691120100DB4B14 /* beliberdalUITests.swift in Sources */,
+				CD775A0E26F8E44400F0F978 /* FavouritesStorage.swift in Sources */,
+				CD775A1326F8E4A100F0F978 /* BalabobaEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -966,6 +1172,7 @@
 		};
 		CDB804DF2691120100DB4B14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F2A6DBE4AAF9537AB472406 /* Pods-beliberdal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -986,6 +1193,7 @@
 		};
 		CDB804E02691120100DB4B14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97683854B82394B02D1B8280 /* Pods-beliberdal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1006,12 +1214,13 @@
 		};
 		CDB804E22691120100DB4B14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C264705990EBACF44F6E9950 /* Pods-beliberdalTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U637V8FNHH;
 				INFOPLIST_FILE = beliberdalTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1026,12 +1235,13 @@
 		};
 		CDB804E32691120100DB4B14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA71E9613B50533E08AEE67 /* Pods-beliberdalTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U637V8FNHH;
 				INFOPLIST_FILE = beliberdalTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1046,6 +1256,7 @@
 		};
 		CDB804E52691120100DB4B14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E972894F0BE55B86F3DFBB49 /* Pods-beliberdal-beliberdalUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1066,6 +1277,7 @@
 		};
 		CDB804E62691120100DB4B14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA43D2B2B405D5138A872937 /* Pods-beliberdal-beliberdalUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

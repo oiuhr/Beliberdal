@@ -37,7 +37,6 @@ class BalabobaStringTransformerTests: XCTestCase {
         sut.transform("пиво")
             .sink { _ in
             } receiveValue: { value in
-                print(value)
                 expectation.fulfill()
             }
             .store(in: &cancellable)

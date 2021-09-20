@@ -7,10 +7,6 @@
 
 import Foundation
 
-protocol SettingsStorageProtocol: AnyObject {
-    var strategy: StringTransformerType { get set }
-}
-
 class SettingsStorage: SettingsStorageProtocol {
     private static var strategyDefaultsKey: String { "currentStrategy" }
     

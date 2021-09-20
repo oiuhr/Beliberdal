@@ -36,7 +36,7 @@ class MainInputView: UIView {
         }
     }
     
-    @Published var mode: Mode = .forced(isOpen: false)
+    @Published var mode: CurrentValueSubject<Mode, Never> = .init(.forced(isOpen: false))
     private var cancellable = Set<AnyCancellable>()
     
     private lazy var closeButton: UIButton = {
@@ -96,6 +96,8 @@ class MainInputView: UIView {
         return constraint
     }()
     
+    lazy var bottomTextViewConstraint = textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+    
     private func fill() {
         backgroundColor = .white
         
@@ -112,7 +114,7 @@ class MainInputView: UIView {
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             suspendedTextViewConstraint,
             textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            bottomTextViewConstraint
         ])
         
         addSubview(placeholderLabel)
@@ -136,10 +138,10 @@ class MainInputView: UIView {
         
         NotificationCenter.default.publisher(for: UITextView.textDidBeginEditingNotification, object: textView)
             .sink { [unowned self] _ in
-                switch mode {
+                switch mode.value {
                 case .forced(let opened):
-                    if !opened { mode = .forced(isOpen: !opened) }
-                default: mode = .opened
+                    if !opened { mode.value = .forced(isOpen: !opened) }
+                default: mode.value = .opened
                 }
             }
             .store(in: &cancellable)
@@ -153,17 +155,13 @@ class MainInputView: UIView {
         
         NotificationCenter.default.publisher(for: UITextView.textDidEndEditingNotification, object: textView)
             .compactMap { $0.object as? UITextView }
-//            .compactMap { $0.text }
             .sink { [unowned self] text in
-//                textPublisher.send(text)
                 resetState()
             }
             .store(in: &cancellable)
         
-        $mode
-//            .print("input view $mode")
+        mode
             .sink { [unowned self] mode in
-                print("input mode:", mode)
                 switch mode {
                 case .still: resetState()
                 default:
@@ -178,28 +176,33 @@ class MainInputView: UIView {
     
     @objc
     private func handleTapGesture() {
-        if !mode.active { mode = .opened }
+        switch mode.value {
+        case .forced(let isOpen):
+            if !isOpen { mode.value = .forced(isOpen: !isOpen) }
+        default:
+            if !mode.value.active { mode.value = .opened }
+        }
     }
     
     @objc
     private func handleCloseButtonTap() {
-        switch mode {
+        switch mode.value {
         case .forced(let isOpen):
-            mode = .forced(isOpen: !isOpen)
+            mode.value = .forced(isOpen: !isOpen)
             resetState()
         default:
-            if mode.active { mode = .still }
+            if mode.value.active { mode.value = .still }
             resetState()
         }
         
     }
     
     private func resetState() {
-        closeButton.isHidden = mode.closeButtonHidden
-        activeTextViewConstraint.isActive = !mode.closeButtonHidden
         textView.text = ""
         placeholderLabel.isHidden = false
         textView.resignFirstResponder()
+        closeButton.isHidden = mode.value.closeButtonHidden
+        activeTextViewConstraint.isActive = !mode.value.closeButtonHidden
     }
     
 }
@@ -209,7 +212,6 @@ extension MainInputView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if let character = text.first, character.isNewline {
             textPublisher.send(textView.text)
-//            resetState()
             return false
         }
         return true

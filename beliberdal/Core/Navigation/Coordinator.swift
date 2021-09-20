@@ -7,8 +7,6 @@
 
 import UIKit
 
-typealias Action = (() -> Void)
-
 protocol Coordinator {
     func start()
     var toPresent: UIViewController { get }
