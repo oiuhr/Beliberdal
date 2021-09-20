@@ -101,7 +101,7 @@ class MainView: UIView {
             .store(in: &cancellable)
     }
     
-    func keyBoardBinder(_ height: CGFloat) {
+    func keyboardBinder(_ height: CGFloat) {
         fireButtonBottomConstraint.constant = height == 0 ? -21 : -height
         sourceInputView.bottomTextViewConstraint.constant = height == 0 ? -10 : -height
     }

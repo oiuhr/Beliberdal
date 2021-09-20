@@ -133,7 +133,7 @@ class MainViewController: ViewController<MainView> {
         else { return }
         
         UIView.animate(withDuration: duration) { [weak self] in
-            self?.mainView.keyBoardBinder(keyboardFrame.height)
+            self?.mainView.keyboardBinder(keyboardFrame.height)
             self?.mainView.layoutIfNeeded()
         }
     }
@@ -144,7 +144,7 @@ class MainViewController: ViewController<MainView> {
         else { return }
         
         UIView.animate(withDuration: duration) { [weak self] in
-            self?.mainView.keyBoardBinder(0)
+            self?.mainView.keyboardBinder(0)
             self?.mainView.layoutIfNeeded()
         }
     }
