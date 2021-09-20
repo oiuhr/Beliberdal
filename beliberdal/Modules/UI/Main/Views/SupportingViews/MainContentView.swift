@@ -76,10 +76,12 @@ class MainContentView: UIView {
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            $0.imageView!.widthAnchor.constraint(equalToConstant: 26),
-            $0.imageView!.heightAnchor.constraint(equalToConstant: 26)
-        ])
+        if let iv = $0.imageView {
+            NSLayoutConstraint.activate([
+                iv.widthAnchor.constraint(equalToConstant: 26),
+                iv.heightAnchor.constraint(equalToConstant: 26)
+            ])
+        }
         return $0
     } (UIButton())
     
@@ -88,10 +90,12 @@ class MainContentView: UIView {
         $0.tintColor = .accentPink
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.imageView?.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            $0.imageView!.widthAnchor.constraint(equalToConstant: 26),
-            $0.imageView!.heightAnchor.constraint(equalToConstant: 26)
-        ])
+        if let iv = $0.imageView {
+            NSLayoutConstraint.activate([
+                iv.widthAnchor.constraint(equalToConstant: 26),
+                iv.heightAnchor.constraint(equalToConstant: 26)
+            ])
+        }
         return $0
     } (UIButton())
     
