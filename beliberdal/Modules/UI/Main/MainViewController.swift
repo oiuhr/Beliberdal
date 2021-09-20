@@ -62,7 +62,6 @@ class MainViewController: ViewController<MainView> {
         viewModel.output.currentMode
             .dropFirst()
             .sink { [weak self] mode in
-                print(mode)
                 switch mode {
                 case .content(let initialValue, let content):
                     self?.mainView.contentView.inputTextView.text = initialValue
@@ -149,11 +148,7 @@ class MainViewController: ViewController<MainView> {
             self?.mainView.layoutIfNeeded()
         }
     }
-    
-    enum InputError: Error {
-        case empty
-    }
-    
+
     private func handleError(_ error: Error) {
         let alert = UIAlertController(title: "Error occured!", message: "Were so sorry.", preferredStyle: .alert)
         alert.addAction(.init(title: "uwu", style: .cancel, handler: nil))

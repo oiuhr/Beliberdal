@@ -18,7 +18,7 @@ class BalabobaStringTransformerTests: XCTestCase {
         cancellable.removeAll()
     }
     
-    func testThatBalabobaStringTransformerInitWithCorrectMode() throws {
+    func testThatBalabobaStringTransformerReturnsCorrectValue() throws {
         // arrange
         let bundle = Bundle(for: type(of: self))
         guard let path = bundle.path(forResource: "BalabobaResponse", ofType: "json"),

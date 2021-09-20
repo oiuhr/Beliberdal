@@ -320,6 +320,7 @@
 			children = (
 				CD5A017726F161B600351FF4 /* SmileyStringTransformerTests.swift */,
 				CD5A017D26F1684700351FF4 /* BalabobaStringTransformerTests.swift */,
+				CD051C0226F274C100D9ED75 /* BalabobaResponse.json */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -647,7 +648,6 @@
 				CD188B7626F2BF5F007AD269 /* Transformers */,
 				CD5A018826F1757200351FF4 /* RequestBuilderTests.swift */,
 				CD188B7726F2BFB0007AD269 /* CatViewModelTests.swift */,
-				CD051C0226F274C100D9ED75 /* BalabobaResponse.json */,
 				CD188B7E26F2CA5C007AD269 /* FavouritesViewModelTests.swift */,
 				CD188B8626F2CE6A007AD269 /* SettingsViewModelTests.swift */,
 				CD775A2926F8F42400F0F978 /* MainViewModelTests.swift */,
