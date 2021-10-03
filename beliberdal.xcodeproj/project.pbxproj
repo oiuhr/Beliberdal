@@ -80,7 +80,6 @@
 		CD5A01A326F1A84100351FF4 /* CatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A226F1A84100351FF4 /* CatViewController.swift */; };
 		CD5A01A526F1AE6F00351FF4 /* CatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */; };
 		CD68DF4226D5859E0004B29A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD68DF4126D5859E0004B29A /* MainViewModel.swift */; };
-		CD775A0426F8BEE500F0F978 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD775A0326F8BEE500F0F978 /* Page.swift */; };
 		CD775A0926F8E43700F0F978 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1F26E6A7CC00FA126A /* SettingsService.swift */; };
 		CD775A0A26F8E43900F0F978 /* SettingsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE1D26E6A7B900FA126A /* SettingsServiceProtocol.swift */; };
 		CD775A0C26F8E43D00F0F978 /* StringTransformerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4BCE2A26E9ABA400FA126A /* StringTransformerType.swift */; };
@@ -119,6 +118,7 @@
 		CD7BF78926CC74C200EF287D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78826CC74C200EF287D /* MainViewController.swift */; };
 		CD7BF78B26CC774700EF287D /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78A26CC774700EF287D /* NetworkClient.swift */; };
 		CD7BF78D26CC7A8C00EF287D /* RequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7BF78C26CC7A8C00EF287D /* RequestBuilder.swift */; };
+		CD824FE42709C39800814B94 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD824FE32709C39700814B94 /* Page.swift */; };
 		CDB804B5269111FE00DB4B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB804B4269111FE00DB4B14 /* AppDelegate.swift */; };
 		CDB804BF269111FE00DB4B14 /* beliberdal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CDB804BD269111FE00DB4B14 /* beliberdal.xcdatamodeld */; };
 		CDB804C12691120100DB4B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDB804C02691120100DB4B14 /* Assets.xcassets */; };
@@ -201,7 +201,6 @@
 		CD5A01A226F1A84100351FF4 /* CatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewController.swift; sourceTree = "<group>"; };
 		CD5A01A426F1AE6E00351FF4 /* CatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatViewModel.swift; sourceTree = "<group>"; };
 		CD68DF4126D5859E0004B29A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		CD775A0326F8BEE500F0F978 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Page.swift; path = ../../../../../Page.swift; sourceTree = "<group>"; };
 		CD775A1626F8E4EF00F0F978 /* SettingsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorageProtocol.swift; sourceTree = "<group>"; };
 		CD775A2926F8F42400F0F978 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		CD7BF77F26CC705D00EF287D /* StringTransformerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTransformerProtocol.swift; sourceTree = "<group>"; };
@@ -210,6 +209,7 @@
 		CD7BF78826CC74C200EF287D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		CD7BF78A26CC774700EF287D /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		CD7BF78C26CC7A8C00EF287D /* RequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilder.swift; sourceTree = "<group>"; };
+		CD824FE32709C39700814B94 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		CDB804B1269111FE00DB4B14 /* beliberdal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = beliberdal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDB804B4269111FE00DB4B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDB804BE269111FE00DB4B14 /* beliberdal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = beliberdal.xcdatamodel; sourceTree = "<group>"; };
@@ -659,8 +659,8 @@
 			isa = PBXGroup;
 			children = (
 				CDB804D92691120100DB4B14 /* beliberdalUITests.swift */,
+				CD824FE32709C39700814B94 /* Page.swift */,
 				CDB804DB2691120100DB4B14 /* Info.plist */,
-				CD775A0326F8BEE500F0F978 /* Page.swift */,
 			);
 			path = beliberdalUITests;
 			sourceTree = "<group>";
@@ -1001,7 +1001,6 @@
 				CD775A0926F8E43700F0F978 /* SettingsService.swift in Sources */,
 				CD775A1226F8E49900F0F978 /* RequestBuilder.swift in Sources */,
 				CD775A2426F8E77E00F0F978 /* UIImage.swift in Sources */,
-				CD775A0426F8BEE500F0F978 /* Page.swift in Sources */,
 				CD775A0F26F8E44600F0F978 /* TransformerResultDTO.swift in Sources */,
 				CD775A2326F8E75800F0F978 /* ViewController.swift in Sources */,
 				CD775A0D26F8E44200F0F978 /* FavouritesStorageProtocol.swift in Sources */,
@@ -1023,6 +1022,7 @@
 				CD775A1F26F8E6E600F0F978 /* CatServiceProtocol.swift in Sources */,
 				CDB804DA2691120100DB4B14 /* beliberdalUITests.swift in Sources */,
 				CD775A0E26F8E44400F0F978 /* FavouritesStorage.swift in Sources */,
+				CD824FE42709C39800814B94 /* Page.swift in Sources */,
 				CD775A1326F8E4A100F0F978 /* BalabobaEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

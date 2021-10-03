@@ -52,7 +52,6 @@ class FavouritesViewController: ViewController<FavouritesView> {
     private var firstLoad: Bool = true
     private func bind() {
         viewModel.output.items
-//            .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 var snapshot = Snapshot()
                 snapshot.appendSections([.main])
